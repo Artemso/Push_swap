@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   rrotate_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 17:01:52 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 17:26:44 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/18 17:27:09 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		check_str(char *input)
-{
-	int	x;
+static void	rrotate(t_nbr **stack);
 
-	x = 0;
-	while (input[x] != '\0')
+void	rrotate_stack(t_prop *xt, int code)
+{
+	if (code == 0)
+		rrotate(xt->stack_a);
+	else if (code == 1)
+		rrotate(xt->stack_b);
+	else if (code == 2)
 	{
-		if (!(input[x] == ' ' || ft_isdigit(input[x])))
-			ft_puterr(er_inp);
-		x++;
+		rrotate(xt->stack_a);
+		rrotate(xt->stack_b);
 	}
-}
-
-void		arg_to_str(char *input, t_prop *xt)
-{
-	ft_safestrjoin(&xt->str, input, 0);
-	ft_safestrjoin(&xt->str, " ", 0);
 }

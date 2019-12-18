@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   push_top.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 17:01:52 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/18 17:25:01 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void		check_str(char *input)
-{
-	int	x;
+static void	push_node(t_prop *xt);
 
-	x = 0;
-	while (input[x] != '\0')
-	{
-		if (!(input[x] == ' ' || ft_isdigit(input[x])))
-			ft_puterr(er_inp);
-		x++;
-	}
-}
-
-void		arg_to_str(char *input, t_prop *xt)
+void	push_top(t_prop *xt, int code)
 {
-	ft_safestrjoin(&xt->str, input, 0);
-	ft_safestrjoin(&xt->str, " ", 0);
+	if (code == 0)
+		push_node(xt);
+	else if (code == 1)
+		push_node(xt);
 }

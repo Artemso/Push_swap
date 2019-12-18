@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 13:38:44 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:49:01 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,19 @@
 
 void	ft_puterr(int x)
 {
-	if (x == 0)
+	if (x == er_usg)
 	{
-		ft_putstr("Usage: sosi zalupu\n");
+		ft_putstr("Usage: sosi zalupu.\n");
 		exit(0);
 	}
-	else if (x == 1)
+	else if (x == er_inp)
 	{
-		ft_putstr("Input is incorrect\n");
+		ft_putstr("Input is incorrect.\n");
 		exit(0);
 	}
-	else if (x == 2)
+	else if (x == er_mem)
 	{
-		ft_putstr("Broken input!\n");
-		exit(0);
-	}
-	else if (x == 3)
-	{
-		ft_putstr("Conversions don't match parameters!\n");
+		ft_putstr("Memory Error.\n");
 		exit(0);
 	}
 }
