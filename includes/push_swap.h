@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 17:03:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:29:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,14 @@ void				arg_to_str(char *input, t_prop *xt);
 */
 
 void				process_input(t_prop *xt);
+
+/*
+** Stack Manipulation
+*/
+
+void				push_top(t_prop *xt, int code);
+void				rotate_stack(t_prop *xt, int code);
+void				rrotate_stack(t_prop *xt, int code);
+void				swap_top(t_prop *xt, int code);
 
 #endif

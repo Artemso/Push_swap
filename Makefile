@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/18 14:07:44 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/18 17:37:14 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ NAME	=	push_swap
 EXECSRC		=	main.c\
 				get_input.c\
 				process_input.c\
+				swap_top.c\
 				err_manager.c
 
 EXECBOBJ	= $(EXECSRC:.c=.o)
