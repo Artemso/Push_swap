@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 18:16:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:56:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,21 @@
 
 static void	init_prop(t_prop *xt)
 {
-	xt->str = ft_strnew(1);
+	xt->stack_a = 0;
+	xt->stack_b = 0;
+}
+
+static void	print_stack(t_nbr *stack)
+{
+	t_nbr *temp;
+
+	temp = stack;
+	while (temp != 0)
+	{
+		printf("%d ", temp->val);
+		temp = temp->next;
+	}
+	printf("\n");
 }
 
 int		main(int argc, char **argv)
@@ -24,6 +38,7 @@ int		main(int argc, char **argv)
 
 	if (!(xt = (t_prop *)malloc(sizeof(t_prop))))
 		ft_puterr(er_mem);
+	init_prop(xt);
 	x = 1;
 	if (argc == 2)
 	{
@@ -43,7 +58,5 @@ int		main(int argc, char **argv)
 	else
 		ft_puterr(er_usg);
 	process_input(xt);
-	swap_top(xt, 0);
-	printf("%d", xt->stack_a->next->val);
 	return (0);
 }

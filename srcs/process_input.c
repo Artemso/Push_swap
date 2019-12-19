@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:07:48 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 17:13:54 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 15:30:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static t_nbr	*new_node(int content)
+t_nbr	*new_node(int content)
 {
 	t_nbr	*node;
 
@@ -49,6 +49,16 @@ static void	make_stack(char **array, t_prop *xt)
 	xt->stack_a = fill_stack(array, xt);
 }
 
+static void	del_array(char **array)
+{
+	int x;
+
+	x = 0;
+	while (array[x] != 0)
+		free(array[x++]);
+	free(array);
+}
+
 void		process_input(t_prop *xt)
 {
 	char	**array;
@@ -56,4 +66,5 @@ void		process_input(t_prop *xt)
 	array = ft_strsplit(xt->str, ' ');
 	ft_strdel(&xt->str);
 	make_stack(array, xt);
+	del_array(array);
 }

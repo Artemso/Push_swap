@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 17:29:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:15:54 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <stdio.h>
 
 # define ST_A xt->stack_a
 # define ST_B xt->stack_b
@@ -47,7 +48,7 @@ typedef struct		s_prop
 {
 	t_nbr			*stack_a;
 	t_nbr			*stack_b;
-	size_t			total;
+	int				total;
 	char			*str;
 }					t_prop;
 
@@ -74,6 +75,7 @@ void				process_input(t_prop *xt);
 ** Stack Manipulation
 */
 
+t_nbr				*new_node(int content);
 void				push_top(t_prop *xt, int code);
 void				rotate_stack(t_prop *xt, int code);
 void				rrotate_stack(t_prop *xt, int code);
