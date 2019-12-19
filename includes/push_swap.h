@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 17:58:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 18:41:13 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,14 @@ void				push_top(t_prop *xt, int code);
 void				rotate_stack(t_prop *xt, int code);
 void				rrotate_stack(t_prop *xt, int code);
 void				swap_top(t_prop *xt, int code);
+
+/*
+** Stack Sorting
+*/
+
+void				sort_stack(t_prop *xt);
+
+
+void		print_stack(t_nbr *stack);
 
 #endif

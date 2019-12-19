@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 17:56:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 18:41:00 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_prop(t_prop *xt)
 	xt->stack_b = 0;
 }
 
-static void	print_stack(t_nbr *stack)
+void		print_stack(t_nbr *stack)
 {
 	t_nbr *temp;
 
@@ -58,5 +58,9 @@ int		main(int argc, char **argv)
 	else
 		ft_puterr(er_usg);
 	process_input(xt);
+	print_stack(xt->stack_a);
+	sort_stack(xt);
+	printf("Sorted!\n");
+	print_stack(xt->stack_a);
 	return (0);
 }
