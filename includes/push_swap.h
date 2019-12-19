@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 17:15:54 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:58:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,17 @@ typedef enum	e_errors
 	er_usg,
 	er_inp
 }				t_errors;
+
+/*
+** Enum for Operations
+*/
+
+typedef enum	e_opers
+{
+	op_a = 0,
+	op_b,
+	op_ab
+}				t_opers;
 
 /*
 ** Linked List struct

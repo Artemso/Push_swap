@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 16:33:58 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:58:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 
 void	push_top(t_prop *xt, int code)
 {
-	if (code == 0)
+	if (code == op_a)
 		push_node(&xt->stack_a, &xt->stack_b);
-	else if (code == 1)
+	else if (code == op_b)
 		push_node(&xt->stack_b, &xt->stack_a);
 }

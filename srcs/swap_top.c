@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 15:52:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/19 17:59:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void	swap_nodes(t_nbr **head)
 
 void		swap_top(t_prop *xt, int code)
 {
-	if (code == 0)
+	if (code == op_a)
 		swap_nodes(&xt->stack_a);
-	else if (code == 1)
+	else if (code == op_b)
 		swap_nodes(&xt->stack_b);
-	else if (code == 2)
+	else if (code == op_ab)
 	{
 		swap_nodes(&xt->stack_a);
 		swap_nodes(&xt->stack_b);
