@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 18:41:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/20 11:09:28 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		main(int argc, char **argv)
 		ft_puterr(er_usg);
 	process_input(xt);
 	print_stack(xt->stack_a);
-	sort_stack(xt);
+	sort_stack_small(xt);
 	printf("Sorted!\n");
 	print_stack(xt->stack_a);
 	return (0);

@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_stack.c                                     :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/20 09:32:49 by solopov          ###   ########.fr       */
+/*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
+/*   Updated: 2019/12/13 10:25:24 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-static void	rotate(t_nbr **head)
-{
-	t_nbr	*curr;
-	t_nbr	*rotme;
+#include "../libft/libft.h"
 
-	rotme = *head;
-	curr = *head;
-	*head = curr->next;
-	while (curr->next != 0)
-		curr = curr->next;
-	rotme->next = 0;
-	curr->next = rotme;
-}
-
-void		rotate_stack(t_nbr	**stack)
-{
-	rotate(stack);
-}
-
-void		rotate_stack_two(t_nbr	**stack, t_nbr	**stack2)
-{
-	rotate(stack);
-	rotate(stack2);
-}
-
+#endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_top.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 17:58:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/20 11:05:38 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 	}
 }
 
-void	push_top(t_prop *xt, int code)
+void	push_top(t_nbr	**stack, t_nbr	**stack2)
 {
-	if (code == op_a)
-		push_node(&xt->stack_a, &xt->stack_b);
-	else if (code == op_b)
-		push_node(&xt->stack_b, &xt->stack_a);
+	push_node(stack, stack2);
 }

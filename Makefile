@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
+#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/19 18:30:50 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/20 10:41:32 by solopov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ EXECSRC		=	main.c\
 				push_top.c\
 				rotate_stack.c\
 				rrotate_stack.c\
-				sort_stack.c\
+				sort_stack_small.c\
 				err_manager.c
 
 EXECBOBJ	= $(EXECSRC:.c=.o)

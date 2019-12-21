@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 18:41:13 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/20 11:05:53 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef enum	e_errors
 }				t_errors;
 
 /*
-** Enum for Operations
+** Enum for Operations, op_a move to b, op_b move to a
 */
 
 typedef enum	e_opers
@@ -60,6 +60,8 @@ typedef struct		s_prop
 	t_nbr			*stack_a;
 	t_nbr			*stack_b;
 	int				total;
+	int				min;
+	int				max;
 	char			*str;
 }					t_prop;
 
@@ -87,18 +89,26 @@ void				process_input(t_prop *xt);
 */
 
 t_nbr				*new_node(int content);
-void				push_top(t_prop *xt, int code);
-void				rotate_stack(t_prop *xt, int code);
-void				rrotate_stack(t_prop *xt, int code);
-void				swap_top(t_prop *xt, int code);
+void				push_top(t_nbr	**stack, t_nbr	**stack2);
+void				rotate_stack(t_nbr	**stack);
+void				rotate_stack_two(t_nbr	**stack, t_nbr	**stack2);
+void				rrotate_stack(t_nbr	**stack);
+void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2);
+void				swap_top(t_nbr	**stack);
+void				swap_top_two(t_nbr	**stack, t_nbr	**stack2);
 
 /*
 ** Stack Sorting
 */
 
-void				sort_stack(t_prop *xt);
+void				sort_stack_small(t_prop *xt);
 
+/*
+** Extra
+*/
 
+void				get_minmax(t_prop *xt, t_nbr *stack);
 void		print_stack(t_nbr *stack);
+
 
 #endif
