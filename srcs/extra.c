@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_top.c                                         :+:      :+:    :+:   */
+/*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 16:19:26 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/23 17:19:56 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	swap_nodes(t_nbr **head)
+int	get_len(t_nbr *stack)
 {
-	t_nbr	*second;
+	int	ret;
+
+	ret = 1;
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+		ret++;
+	}
+	return (ret);
+}
+
+int	get_max(t_nbr *stack)
+{
 	t_nbr	*temp;
+	int		max;
 
-	temp = *head;
-	second = temp->next;
-	temp->next = second->next;
-	second->next = temp;
-	*head = second;
-}
-
-void		swap_top(t_nbr **stack, t_prop *xt)
-{
-	swap_nodes(stack);
-	xt->steps_taken += 1;
-}
-
-void		swap_top_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
-{
-	swap_nodes(stack);
-	swap_nodes(stack2);
-	xt->steps_taken += 2;
+	temp = stack;
+	max = temp->val;
+	while (temp->next != 0)
+	{
+		if (temp->next->val > max)
+			max = temp->next->val;
+		temp = temp->next;
+	}
+	return (max);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/20 10:41:32 by solopov          ###   ########.fr        #
+#    Updated: 2019/12/23 17:09:42 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ RED			=	\033[1;31m
 NAME	=	push_swap
 
 EXECSRC		=	main.c\
+				extra.c\
 				get_input.c\
 				process_input.c\
 				swap_top.c\

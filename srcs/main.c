@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/20 11:09:28 by solopov          ###   ########.fr       */
+/*   Updated: 2019/12/23 17:22:48 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_prop(t_prop *xt)
 {
 	xt->stack_a = 0;
 	xt->stack_b = 0;
+	xt->steps_taken = 0;
 }
 
 void		print_stack(t_nbr *stack)
@@ -62,5 +63,6 @@ int		main(int argc, char **argv)
 	sort_stack_small(xt);
 	printf("Sorted!\n");
 	print_stack(xt->stack_a);
+	printf("Steps taken: %d\n", xt->steps_taken);
 	return (0);
 }

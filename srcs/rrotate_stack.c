@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rrotate_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:26:44 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/20 09:44:27 by solopov          ###   ########.fr       */
+/*   Updated: 2019/12/23 16:19:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ static void	rrotate(t_nbr **stack)
 	*stack = fast;
 }
 
-void		rrotate_stack(t_nbr	**stack)
+void		rrotate_stack(t_nbr **stack, t_prop *xt)
 {
 	rrotate(stack);
+	xt->steps_taken += 1;
 }
 
-void		rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2)
+void		rrotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
 {
 	rrotate(stack);
 	rrotate(stack2);
+	xt->steps_taken += 2;
 }

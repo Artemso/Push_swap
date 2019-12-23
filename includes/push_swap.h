@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/20 11:05:53 by solopov          ###   ########.fr       */
+/*   Updated: 2019/12/23 18:41:44 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define ST_A xt->stack_a
 # define ST_B xt->stack_b
+# define NEXT2 next->next
 
 /*
 ** Enum for Error Handling
@@ -63,6 +64,8 @@ typedef struct		s_prop
 	int				min;
 	int				max;
 	char			*str;
+	int				steps_taken;
+	int				run_cnt;
 }					t_prop;
 
 /*
@@ -89,13 +92,13 @@ void				process_input(t_prop *xt);
 */
 
 t_nbr				*new_node(int content);
-void				push_top(t_nbr	**stack, t_nbr	**stack2);
-void				rotate_stack(t_nbr	**stack);
-void				rotate_stack_two(t_nbr	**stack, t_nbr	**stack2);
-void				rrotate_stack(t_nbr	**stack);
-void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2);
-void				swap_top(t_nbr	**stack);
-void				swap_top_two(t_nbr	**stack, t_nbr	**stack2);
+void				push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rotate_stack(t_nbr **stack, t_prop *xt);
+void				rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rrotate_stack(t_nbr	**stack, t_prop *xt);
+void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
+void				swap_top(t_nbr	**stack, t_prop *xt);
+void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
 
 /*
 ** Stack Sorting
@@ -108,7 +111,8 @@ void				sort_stack_small(t_prop *xt);
 */
 
 void				get_minmax(t_prop *xt, t_nbr *stack);
-void		print_stack(t_nbr *stack);
-
+void				print_stack(t_nbr *stack);
+int					get_len(t_nbr *stack);
+int					get_max(t_nbr *stack);
 
 #endif
