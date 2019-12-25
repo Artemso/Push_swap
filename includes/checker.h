@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2019/12/25 17:00:30 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 17:43:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,19 @@ void				process_input(t_prop *xt);
 */
 
 t_nbr				*new_node(int content);
-void				push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt);
-void				rotate_stack(t_nbr **stack, int op, t_prop *xt);
+void				push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rotate_stack(t_nbr **stack, t_prop *xt);
 void				rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rrotate_stack(t_nbr	**stack, int op, t_prop *xt);
+void				rrotate_stack(t_nbr	**stack, t_prop *xt);
 void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
-void				swap_top(t_nbr	**stack, int op, t_prop *xt);
+void				swap_top(t_nbr	**stack, t_prop *xt);
 void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
+
+/*
+** Validation
+*/
+
+void				apply_instruction(char *line, t_prop *xt);
+void				check_stacks(t_prop *xt);
 
 #endif

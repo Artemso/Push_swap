@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_top.c                                         :+:      :+:    :+:   */
+/*   check_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 17:32:09 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/25 17:40:35 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/25 17:42:13 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 
-static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
+int	is_sorted(t_nbr *head)
 {
-	t_nbr	*temp;
+	t_nbr *temp;
 
-	temp = *stack_1;
-	*stack_1 = (*stack_1)->next;
-	if ((*stack_2) == 0)
+	temp = head;
+	while (temp->next != 0)
 	{
-		*stack_2 = temp;
-		(*stack_2)->next = 0;
+		if (temp->val > temp->next->val)
+			return (0);
+		temp = temp->next;
 	}
-	else
-	{
-		temp->next = *stack_2;
-		*stack_2 = temp;
-	}
+	return (1);
 }
 
-void	push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+
+void	check_stacks(t_prop *xt)
 {
-	push_node(stack, stack2);
-	xt->steps_taken += 1;
+	if (is_sorted(xt->stack_a) && xt->stack_b == 0)
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 }

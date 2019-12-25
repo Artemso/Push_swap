@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 17:02:11 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/25 17:42:40 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,6 @@ PUSH_SWAP_SRC		= main.c\
 					sorting_disp.c\
 					err_manager.c
 
-PUSH_SWAP_OBJ		= $(PUSH_SWAP_SRC:.c=.o)
-
 PUSH_SWAP_FILES		= $(addprefix $(PUSH_SWAP_DIR), $(PUSH_SWAP_SRC))
 
 # CHECKER files
@@ -51,9 +49,8 @@ CHECKER_SRC			= main.c\
 					rrotate_stack.c\
 					swap_top.c\
 					err_manager.c\
-
-
-CHECKER_OBJ			= $(PUSH_SWAP_SRC:.c=.o)
+					apply_instruction.c\
+					check_stack.c
 
 CHECKER_FILES		= $(addprefix $(CHECKER_DIR), $(CHECKER_SRC))
 
@@ -62,7 +59,6 @@ CHECKER_FILES		= $(addprefix $(CHECKER_DIR), $(CHECKER_SRC))
 PUSH_SWAP_DIR		= ./srcs/push_swap/
 CHECKER_DIR			= ./srcs/checker/
 LIBFT_DIR			= ./libft/
-INCLUDES_DIR		= ./includes/
 
 # Libraries
 
