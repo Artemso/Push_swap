@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:03:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 16:26:59 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_nbr
 }					t_nbr;
 
 /*
-** Push_Swap struct
+** Data container struct
 */
 
 typedef struct		s_prop

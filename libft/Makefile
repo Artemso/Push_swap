@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 15:25:28 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 15:14:06 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/25 16:23:44 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,9 +89,9 @@ $(NAME):
 		@ranlib $(NAME)
 
 clean:
-		/bin/rm -f $(OBJ)
+		@/bin/rm -f $(OBJ)
 
 fclean: clean
-		/bin/rm -f $(NAME)
+		@/bin/rm -f $(NAME)
 
 re: fclean all
