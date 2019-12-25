@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 16:35:55 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/25 16:38:54 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,9 +64,9 @@ LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 
 .PHONY: all clean fclean re
 
-all: $(PUSH_SWAP_EXE) $(CHECKER_EXE)
+all: $(LIBFT_NAME) $(PUSH_SWAP_EXE) $(CHECKER_EXE)
 
-$(PUSH_SWAP_EXE): $(LIBFT_NAME)
+$(PUSH_SWAP_EXE): 
 	@echo "$(RED)Compiling push_swap...$(RES)"
 	@gcc -o $(PUSH_SWAP_EXE) $(CFLAGS) $(LIBFT_A) $(PUSH_SWAP_FILES)
 	@echo "$(GREENB)$(PUSH_SWAP_EXE) $(GREEN)done.$(RES)"
