@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 16:38:54 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/25 17:02:11 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,13 @@ PUSH_SWAP_FILES		= $(addprefix $(PUSH_SWAP_DIR), $(PUSH_SWAP_SRC))
 CHECKER_EXE			=	checker
 
 CHECKER_SRC			= main.c\
+					get_input.c\
+					process_input.c\
+					push_top.c\
+					rotate_stack.c\
+					rrotate_stack.c\
+					swap_top.c\
+					err_manager.c\
 
 
 CHECKER_OBJ			= $(PUSH_SWAP_SRC:.c=.o)

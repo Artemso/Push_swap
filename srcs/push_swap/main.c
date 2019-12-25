@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 17:00:46 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int		main(int argc, char **argv)
 	else
 		ft_puterr(er_usg);
 	process_input(xt);
-	print_stack(xt->stack_a);
 	init_sorting(xt);
 	return (0);
 }

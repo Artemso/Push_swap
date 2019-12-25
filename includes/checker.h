@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2019/12/25 16:28:12 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 17:00:30 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 # define CHECKER_H
 
 # include "../libft/libft.h"
+# include <stdio.h>
+
+/*
+** Enum for Error Handling
+*/
+
+typedef enum	e_errors
+{
+	er_mem = 0,
+	er_usg,
+	er_inp
+}				t_errors;
 
 /*
 ** Enum for Operations, op_a move to b, op_b move to a
@@ -25,7 +37,6 @@ typedef enum	e_opers
 	op_b,
 	op_ab
 }				t_opers;
-
 
 /*
 ** Linked List struct
@@ -52,6 +63,25 @@ typedef struct		s_prop
 	int				steps_taken;
 	int				run_cnt;
 }					t_prop;
+
+/*
+** Error Management
+*/
+
+void				ft_puterr(int x);
+
+/*
+** Get Input
+*/
+
+void				check_str(char *input);
+void				arg_to_str(char *input, t_prop *xt);
+
+/*
+** Process Input
+*/
+
+void				process_input(t_prop *xt);
 
 /*
 ** Stack Manipulation
