@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack_small.c                                 :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 18:42:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 14:08:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		get_minmax(t_prop *xt, t_nbr *stack)
 	}
 }
 
-static int	is_sorted(t_nbr *head)
+int	is_sorted(t_nbr *head)
 {
 	t_nbr *temp;
 

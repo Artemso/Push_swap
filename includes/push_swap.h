@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 18:41:44 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 14:09:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
 ** Stack Sorting
 */
 
+void				init_sorting(t_prop *xt);
 void				sort_stack_small(t_prop *xt);
+void				sort_stack_med(t_prop *xt);
+int					is_sorted(t_nbr *head);
 
 /*
 ** Extra

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 17:22:48 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 14:01:09 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		main(int argc, char **argv)
 		ft_puterr(er_usg);
 	process_input(xt);
 	print_stack(xt->stack_a);
+	init_sorting(xt);
 	sort_stack_small(xt);
 	printf("Sorted!\n");
 	print_stack(xt->stack_a);
