@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:26:44 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 16:19:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:30:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	rrotate(t_nbr **stack)
 {
@@ -29,9 +29,13 @@ static void	rrotate(t_nbr **stack)
 	*stack = fast;
 }
 
-void		rrotate_stack(t_nbr **stack, t_prop *xt)
+void		rrotate_stack(t_nbr **stack, int op, t_prop *xt)
 {
 	rrotate(stack);
+	if (op == op_a)
+		ft_putstr("rra\n");
+	else if (op == op_b)
+		ft_putstr("rrb\n");
 	xt->steps_taken += 1;
 }
 
@@ -39,5 +43,6 @@ void		rrotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
 {
 	rrotate(stack);
 	rrotate(stack2);
-	xt->steps_taken += 2;
+	ft_putstr("rrr\n");
+	xt->steps_taken += 1;
 }

@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting_disp.c                                     :+:      :+:    :+:   */
+/*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/25 14:01:30 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 14:08:50 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/25 15:30:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	init_sorting(t_prop *xt)
+int	get_len(t_nbr *stack)
 {
-	if (xt->total <= 6)
-		sort_stack_small(xt);
-	else
-		sort_stack_med(xt);
+	int	ret;
+
+	ret = 1;
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+		ret++;
+	}
+	return (ret);
+}
+
+int	get_max(t_nbr *stack)
+{
+	t_nbr	*temp;
+	int		max;
+
+	temp = stack;
+	max = temp->val;
+	while (temp->next != 0)
+	{
+		if (temp->next->val > max)
+			max = temp->next->val;
+		temp = temp->next;
+	}
+	return (max);
 }

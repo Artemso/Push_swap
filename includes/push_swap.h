@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 14:09:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:03:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ void				process_input(t_prop *xt);
 */
 
 t_nbr				*new_node(int content);
-void				push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rotate_stack(t_nbr **stack, t_prop *xt);
+void				push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt);
+void				rotate_stack(t_nbr **stack, int op, t_prop *xt);
 void				rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rrotate_stack(t_nbr	**stack, t_prop *xt);
+void				rrotate_stack(t_nbr	**stack, int op, t_prop *xt);
 void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
-void				swap_top(t_nbr	**stack, t_prop *xt);
+void				swap_top(t_nbr	**stack, int op, t_prop *xt);
 void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
 
 /*

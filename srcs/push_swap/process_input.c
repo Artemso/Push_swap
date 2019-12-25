@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:07:48 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/19 15:30:31 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:30:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 t_nbr	*new_node(int content)
 {

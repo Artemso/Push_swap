@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 15:25:28 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/18 13:29:02 by asolopov         ###   ########.fr        #
+#    Updated: 2019/12/25 15:14:06 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,9 +84,9 @@ FLAGS = -Werror -Wextra -Wall
 all: $(NAME)
 
 $(NAME):
-		gcc -c $(FLAGS) $(SRCS) -I $(HDS)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
+		@gcc -c $(FLAGS) $(SRCS) -I $(HDS)
+		@ar rc $(NAME) $(OBJ)
+		@ranlib $(NAME)
 
 clean:
 		/bin/rm -f $(OBJ)

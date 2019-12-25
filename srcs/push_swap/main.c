@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 14:01:09 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:30:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	init_prop(t_prop *xt)
 {
@@ -61,9 +61,5 @@ int		main(int argc, char **argv)
 	process_input(xt);
 	print_stack(xt->stack_a);
 	init_sorting(xt);
-	sort_stack_small(xt);
-	printf("Sorted!\n");
-	print_stack(xt->stack_a);
-	printf("Steps taken: %d\n", xt->steps_taken);
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 14:08:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:30:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void		get_minmax(t_prop *xt, t_nbr *stack)
 {
@@ -49,7 +49,7 @@ static void	sort_two(t_nbr **stack, t_prop *xt)
 
 	temp = *stack;
 	if (is_sorted(temp) != 1)
-		swap_top(&temp, xt);
+		swap_top(&temp, op_a, xt);
 	xt->stack_a = temp;
 }
 
@@ -63,24 +63,24 @@ static void	sort_three(t_nbr **stack, t_prop *xt)
 		if (temp->val > temp->next->val &&
 				temp->next->val > temp->next->next->val)
 		{
-			swap_top(&temp, xt);
-			rrotate_stack(&temp, xt);
+			swap_top(&temp, op_a, xt);
+			rrotate_stack(&temp, op_a, xt);
 		}
 		else if (temp->val > temp->next->val &&
 				temp->val < temp->next->next->val)
-			swap_top(&temp, xt);
+			swap_top(&temp, op_a, xt);
 		else if (temp->val > temp->next->val &&
 				temp->next->val < temp->next->next->val)
-			rotate_stack(&temp, xt);
+			rotate_stack(&temp, op_a, xt);
 		else if (temp->val < temp->next->val &&
 				temp->val < temp->next->next->val)
 		{
-			swap_top(&temp, xt);
-			rotate_stack(&temp, xt);
+			swap_top(&temp, op_a, xt);
+			rotate_stack(&temp, op_a, xt);
 		}
 		else if (temp->val < temp->next->val &&
 				temp->next->val > temp->next->next->val)
-			rrotate_stack(&temp, xt);
+			rrotate_stack(&temp, op_a, xt);
 	}
 	*stack = temp;
 }
@@ -94,10 +94,10 @@ static void	sort_four(t_prop *xt)
 	temp_b = xt->stack_b;
 	get_minmax(xt, temp_a);
 	while (temp_a->val != xt->min)
-		rotate_stack(&temp_a, xt);
-	push_top(&temp_a, &temp_b, xt);
+		rotate_stack(&temp_a, op_a, xt);
+	push_top(&temp_a, &temp_b, op_a, xt);
 	sort_three(&temp_a, xt);
-	push_top(&temp_b, &temp_a, xt);
+	push_top(&temp_b, &temp_a, op_b, xt);
 	xt->stack_a = temp_a;
 }
 
@@ -110,15 +110,15 @@ static void	sort_five(t_prop *xt)
 	temp_b = xt->stack_b;
 	get_minmax(xt, temp_a);
 	while (temp_a->val != xt->min)
-		rotate_stack(&temp_a, xt);
-	push_top(&temp_a, &temp_b, xt);
+		rotate_stack(&temp_a, op_a, xt);
+	push_top(&temp_a, &temp_b, op_a, xt);
 	while (temp_a->val != xt->max)
-		rotate_stack(&temp_a, xt);
-	push_top(&temp_a, &temp_b, xt);
+		rotate_stack(&temp_a, op_a, xt);
+	push_top(&temp_a, &temp_b, op_a, xt);
 	sort_three(&temp_a, xt);
-	push_top(&temp_b, &temp_a, xt);
-	rotate_stack(&temp_a, xt);
-	push_top(&temp_b, &temp_a, xt);
+	push_top(&temp_b, &temp_a, op_b, xt);
+	rotate_stack(&temp_a, op_a, xt);
+	push_top(&temp_b, &temp_a, op_b, xt);
 	xt->stack_a = temp_a;
 }
 
@@ -132,31 +132,31 @@ static void	sort_six(t_prop *xt)
 	temp_b = xt->stack_b;
 	x = 3;
 	while (x-- > 0)
-		push_top(&temp_a, &temp_b, xt);
+		push_top(&temp_a, &temp_b, op_a, xt);
 	sort_three(&temp_a, xt);
 	sort_three(&temp_b, xt);
 	while (get_len(temp_a) < xt->total)
 	{
 		if (temp_b->val > temp_a->val && temp_b->val < temp_a->next->val)
 		{
-			rotate_stack(&temp_a, xt);
-			push_top(&temp_b, &temp_a, xt);
+			rotate_stack(&temp_a, op_a, xt);
+			push_top(&temp_b, &temp_a, op_b, xt);
 		}
 		else if (temp_b->val < temp_a->val)
 		{
-			push_top(&temp_b, &temp_a, xt);
-			rotate_stack(&temp_a, xt);
+			push_top(&temp_b, &temp_a, op_b, xt);
+			rotate_stack(&temp_a, op_a, xt);
 		}
 		else if (temp_a->val == get_max(temp_a) && temp_b->val > temp_a->val)
 		{
-			rotate_stack(&temp_a, xt);
-			push_top(&temp_b, &temp_a, xt);
+			rotate_stack(&temp_a, op_a, xt);
+			push_top(&temp_b, &temp_a, op_b, xt);
 		}
 		else
-			rotate_stack(&temp_a, xt);
+			rotate_stack(&temp_a, op_a, xt);
 	}
 	while (is_sorted(temp_a) != 1)
-		rotate_stack(&temp_a, xt);
+		rotate_stack(&temp_a, op_a, xt);
 	xt->stack_a = temp_a;
 }
 

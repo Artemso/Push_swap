@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_manager.c                                      :+:      :+:    :+:   */
+/*   sorting_disp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 16:49:01 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/25 14:01:30 by asolopov          #+#    #+#             */
+/*   Updated: 2019/12/25 15:30:02 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	ft_puterr(int x)
+void	init_sorting(t_prop *xt)
 {
-	if (x == er_usg)
-	{
-		ft_putstr("Usage: sosi zalupu.\n");
-		exit(0);
-	}
-	else if (x == er_inp)
-	{
-		ft_putstr("Input is incorrect.\n");
-		exit(0);
-	}
-	else if (x == er_mem)
-	{
-		ft_putstr("Memory Error.\n");
-		exit(0);
-	}
+	if (xt->total <= 6)
+		sort_stack_small(xt);
+	else
+		sort_stack_med(xt);
 }

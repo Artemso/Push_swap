@@ -6,11 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/23 16:19:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2019/12/25 15:30:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 {
@@ -30,8 +30,12 @@ static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 	}
 }
 
-void	push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+void	push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt)
 {
 	push_node(stack, stack2);
+	if (op == op_a)
+		ft_putstr("pa\n");
+	else if (op == op_b)
+		ft_putstr("pb\n");
 	xt->steps_taken += 1;
 }
