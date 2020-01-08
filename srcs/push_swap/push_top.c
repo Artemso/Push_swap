@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_top.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:08:17 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ void	push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt)
 		ft_putstr("pa\n");
 	else if (op == op_b)
 		ft_putstr("pb\n");
-	xt->steps_taken += 1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 17:00:46 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:07:27 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	init_prop(t_prop *xt)
 {
 	xt->stack_a = 0;
 	xt->stack_b = 0;
-	xt->steps_taken = 0;
 }
 
 void		print_stack(t_nbr *stack)

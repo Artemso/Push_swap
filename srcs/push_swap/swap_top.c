@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_top.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:10:12 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void		swap_top(t_nbr **stack, int op, t_prop *xt)
 		ft_putstr("sa\n");
 	else if (op == op_b)
 		ft_putstr("sb\n");
-	xt->steps_taken += 1;
 }
 
 void		swap_top_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
@@ -39,5 +38,4 @@ void		swap_top_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
 	swap_nodes(stack);
 	swap_nodes(stack2);
 	ft_putstr("ss\n");
-	xt->steps_taken += 2;
 }

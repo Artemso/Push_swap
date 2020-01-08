@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:03 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/08 11:11:07 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,44 +122,6 @@ static void	sort_five(t_prop *xt)
 	xt->stack_a = temp_a;
 }
 
-static void	sort_six(t_prop *xt)
-{
-	t_nbr	*temp_a;
-	t_nbr	*temp_b;
-	int		x;
-
-	temp_a = xt->stack_a;
-	temp_b = xt->stack_b;
-	x = 3;
-	while (x-- > 0)
-		push_top(&temp_a, &temp_b, op_a, xt);
-	sort_three(&temp_a, xt);
-	sort_three(&temp_b, xt);
-	while (get_len(temp_a) < xt->total)
-	{
-		if (temp_b->val > temp_a->val && temp_b->val < temp_a->next->val)
-		{
-			rotate_stack(&temp_a, op_a, xt);
-			push_top(&temp_b, &temp_a, op_b, xt);
-		}
-		else if (temp_b->val < temp_a->val)
-		{
-			push_top(&temp_b, &temp_a, op_b, xt);
-			rotate_stack(&temp_a, op_a, xt);
-		}
-		else if (temp_a->val == get_max(temp_a) && temp_b->val > temp_a->val)
-		{
-			rotate_stack(&temp_a, op_a, xt);
-			push_top(&temp_b, &temp_a, op_b, xt);
-		}
-		else
-			rotate_stack(&temp_a, op_a, xt);
-	}
-	while (is_sorted(temp_a) != 1)
-		rotate_stack(&temp_a, op_a, xt);
-	xt->stack_a = temp_a;
-}
-
 void		sort_stack_small(t_prop *xt)
 {
 	if (xt->total == 2)
@@ -170,6 +132,4 @@ void		sort_stack_small(t_prop *xt)
 		sort_four(xt);
 	else if (xt->total == 5)
 		sort_five(xt);
-	else if (xt->total == 6)
-		sort_six(xt);
 }
