@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2019/12/25 17:43:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/11 13:10:27 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdio.h>
+# include "mlx.h"
 
 /*
 ** Enum for Error Handling
@@ -62,6 +63,11 @@ typedef struct		s_prop
 	char			*str;
 	int				steps_taken;
 	int				run_cnt;
+
+	void			*mlx_ptr;
+	void			*win_ptr;
+	void			*img_ptr;
+	int				*img_data;
 }					t_prop;
 
 /*
@@ -102,5 +108,12 @@ void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
 
 void				apply_instruction(char *line, t_prop *xt);
 void				check_stacks(t_prop *xt);
+
+/*
+** Visuals
+*/
+
+void				visualise(t_prop *xt);
+int					key_hook_press(int keycode, t_prop *xt);
 
 #endif

@@ -1,12 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visualiser.c                                       :+:      :+:    :+:   */
+/*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/25 14:42:20 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 14:42:20 by asolopov         ###   ########.fr       */
+/*   Created: 2020/01/11 12:22:15 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/11 12:22:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../includes/checker.h"
+
+int	key_hook_press(int keycode, t_prop *xt)
+{
+	if (keycode == 53)
+		exit(1);
+	return (0);
+}

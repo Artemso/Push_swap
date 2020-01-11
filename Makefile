@@ -6,13 +6,13 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 17:42:40 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/11 12:23:30 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Flags 'n colors
 
-CFLAGS		=	-O3
+CFLAGS		=	-O3 -g
 GREEN		=	\033[0;32m
 GREENB		=	\033[1;32m
 RES			=	\033[0m
@@ -50,6 +50,8 @@ CHECKER_SRC			= main.c\
 					swap_top.c\
 					err_manager.c\
 					apply_instruction.c\
+					visualiser.c\
+					controls.c\
 					check_stack.c
 
 CHECKER_FILES		= $(addprefix $(CHECKER_DIR), $(CHECKER_SRC))
@@ -64,6 +66,7 @@ LIBFT_DIR			= ./libft/
 
 LIBFT_NAME			= libft.a
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
+MLX_LNK				= /usr/local/lib/ -l mlx -framework OpenGL -framework AppKit
 
 .PHONY: all clean fclean re
 
@@ -76,7 +79,7 @@ $(PUSH_SWAP_EXE):
 
 $(CHECKER_EXE):
 	@echo "$(RED)Compiling checker...$(RES)"
-	@gcc -o $(CHECKER_EXE) $(CFLAGS) $(LIBFT_A) $(CHECKER_FILES)
+	@gcc -o $(CHECKER_EXE) $(CFLAGS) $(LIBFT_A) $(CHECKER_FILES) -L $(MLX_LNK)
 	@echo "$(GREENB)$(CHECKER_EXE) $(GREEN)done.$(RES)"
 
 $(LIBFT_NAME):
