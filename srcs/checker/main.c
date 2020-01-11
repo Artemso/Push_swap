@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:24:13 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/11 13:12:36 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/11 15:11:36 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,5 @@ int			main(int argc, char **argv)
 	}
 	process_input(xt);
 	visualise(xt);
-	while (y != 0)
-	{
-		y = get_next_line(0, &line);
-		if (y != 0)
-		{
-			apply_instruction(line, xt);
-			free(line);
-		}
-	}
 	check_stacks(xt);
 }
