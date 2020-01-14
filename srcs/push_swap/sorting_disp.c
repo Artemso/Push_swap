@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting_disp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:01:30 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/08 11:00:22 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/13 13:43:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	init_sorting(t_prop *xt)
 	if (xt->total <= 5)
 		sort_stack_small(xt);
 	else
-		sort_stack_med(xt);
+		sort_stack_quick(xt);
 }

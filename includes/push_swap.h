@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/11 11:45:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/14 17:35:02 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ typedef struct		s_nbr
 	struct s_nbr	*next;
 }					t_nbr;
 
+typedef struct		s_elem
+{
+	int				val;
+	struct s_elem	*next;
+}					t_elem;
+
 /*
 ** Push_Swap struct
 */
@@ -62,7 +68,10 @@ typedef struct		s_prop
 	int				total;
 	int				min;
 	int				max;
+
 	int				pivot;
+	t_elem			*elems;
+
 	char			*str;
 }					t_prop;
 
@@ -104,7 +113,9 @@ void				swap_top_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 
 void				sort_stack_small(t_prop *xt);
 void				sort_stack_med(t_prop *xt);
+void				sort_stack_quick(t_prop *xt);
 void				init_sorting(t_prop *xt);
+int					is_sorted(t_nbr *head);
 
 /*
 ** Extra
@@ -112,7 +123,8 @@ void				init_sorting(t_prop *xt);
 
 void				get_minmax(t_prop *xt, t_nbr *stack);
 void				print_stack(t_nbr *stack);
+void				print_elems(t_elem *stack);
 int					get_len(t_nbr *stack);
-
+t_elem				*new_elem(int content);
 
 #endif

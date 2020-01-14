@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/11 12:23:30 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/13 13:39:35 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ PUSH_SWAP_SRC		= main.c\
 					rrotate_stack.c\
 					sort_med.c\
 					sort_small.c\
+					sort_quick.c\
 					sorting_disp.c\
 					err_manager.c
 

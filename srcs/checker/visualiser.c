@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:42:20 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/11 15:36:11 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:51:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int			draw_stack(t_prop *xt, t_nbr *stack)
 	pos = 100;
 	while (temp != 0)
 	{
-		xt->img_ptr = mlx_new_image(xt->mlx_ptr, temp->val * 2, 10);
+		xt->img_ptr = mlx_new_image(xt->mlx_ptr, temp->val * 10, 10);
 		xt->img_data = (int *)mlx_get_data_addr(xt->img_ptr, &bpp, &size_line, &endian);
 		fill_image(xt, temp);
 		mlx_put_image_to_window(xt->mlx_ptr, xt->win_ptr, xt->img_ptr, 20, pos);
@@ -83,7 +83,7 @@ int			draw_stack_2(t_prop *xt, t_nbr *stack)
 	pos = 100;
 	while (temp != 0)
 	{
-		xt->img_ptr = mlx_new_image(xt->mlx_ptr, temp->val * 2, 10);
+		xt->img_ptr = mlx_new_image(xt->mlx_ptr, temp->val * 10, 10);
 		xt->img_data = (int *)mlx_get_data_addr(xt->img_ptr, &bpp, &size_line, &endian);
 		fill_image(xt, temp);
 		mlx_put_image_to_window(xt->mlx_ptr, xt->win_ptr, xt->img_ptr, 1000, pos);

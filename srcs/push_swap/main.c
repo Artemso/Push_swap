@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/08 11:07:27 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/14 17:36:29 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@ static void	init_prop(t_prop *xt)
 void		print_stack(t_nbr *stack)
 {
 	t_nbr *temp;
+
+	temp = stack;
+	while (temp != 0)
+	{
+		printf("%d ", temp->val);
+		temp = temp->next;
+	}
+	printf("\n");
+}
+
+void		print_elems(t_elem *stack)
+{
+	t_elem *temp;
 
 	temp = stack;
 	while (temp != 0)

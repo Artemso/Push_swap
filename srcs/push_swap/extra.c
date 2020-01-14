@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/14 17:36:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,15 @@ int	get_max(t_nbr *stack)
 		temp = temp->next;
 	}
 	return (max);
+}
+
+t_elem	*new_elem(int content)
+{
+	t_elem	*node;
+
+	if (!(node = (t_elem *)malloc(sizeof(t_elem))))
+		ft_puterr(er_mem);
+	node->val = content;
+	node->next = NULL;
+	return (node);
 }

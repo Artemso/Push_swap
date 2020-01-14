@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/11 15:06:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/14 10:51:41 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,6 @@ void				check_stacks(t_prop *xt);
 void				visualise(t_prop *xt);
 int					key_hook_press(int keycode, t_prop *xt);
 int					draw_stack(t_prop *xt, t_nbr *stack);
+int					draw_stack_2(t_prop *xt, t_nbr *stack);
 
 #endif
