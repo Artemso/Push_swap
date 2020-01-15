@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/08 11:11:07 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/15 17:46:54 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	sort_two(t_nbr **stack, t_prop *xt)
 	xt->stack_a = temp;
 }
 
-static void	sort_three(t_nbr **stack, t_prop *xt)
+void	sort_three(t_nbr **stack, t_prop *xt)
 {
 	t_nbr	*temp;
 
