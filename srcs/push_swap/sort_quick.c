@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/15 18:35:35 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/16 14:31:10 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	find_closestval(int len, t_nbr *stack, t_prop *xt)
 			if (stack->val + avg > prevmin + avg)
 				prevmin = stack->val;
 		}
-		else if (stack->val > avg)
+		else if (stack->val >= avg)
 		{
 			if (stack->val - avg < prevmax - avg)
 				prevmax = stack->val;
@@ -50,11 +50,11 @@ static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
 	int		cnt;
 	t_nbr	*temp;
 
-	get_minmax(xt, xt->stack_a);
+	get_minmax(xt, stack);
 	printf("min:%d\n", xt->min);
 	printf("max:%d\n", xt->max);
 	cnt = 0;
-	temp = stack;
+	// temp = stack;
 	// while (cnt < len)
 	// {
 	// 	if (temp->next == 0)
@@ -62,7 +62,7 @@ static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
 	// 	temp = temp->next;
 	// 	cnt++;
 	// }
-	find_closestval(xt->total, stack, xt);
+	find_closestval(len, stack, xt);
 	printf("Selected pivot:%d\n", xt->pivot);
 }
 
@@ -75,7 +75,7 @@ static void	split_stack(t_prop *xt)
 	moved = 0;
 	while (cnt < xt->total)
 	{
-		if (xt->stack_a->val <= xt->pivot)
+		if (xt->stack_a->val < xt->pivot)
 		{
 			printf("Pushing val:%d\n", xt->stack_a->val);
 			push_top(&xt->stack_a, &xt->stack_b, op_a, xt);
@@ -108,16 +108,65 @@ static void	remove_from_elems(t_prop *xt)
 {
 	t_elem *head;
 
-	head = xt->elems->next;
-	xt->elems = head;
+	if (xt->elems->next != 0)
+	{
+		head = xt->elems->next;
+		xt->elems = head;
+	}
+	else
+		printf("SUKA");
 }
 
 static void	routine_a(t_prop *xt)
 {
+	int cnt;
+
+	cnt = 0;
+	while (cnt < xt->elems->val)
+	{
+		push_top(&xt->stack_a, &xt->stack_b, op_a, xt);
+		cnt++;
+	}
 }
 
 static void	routine_b(t_prop *xt)
 {
+	int cnt;
+	int sent;
+
+	cnt = 0;
+	sent = 0;
+	while (xt->stack_b != 0)
+	{
+		if (get_len(xt->stack_b) > 3)
+		{
+			get_pivot_val(xt->elems->val, xt, xt->stack_b);
+			while (cnt < xt->elems->val)
+			{
+				if (xt->stack_b->val > xt->pivot)
+				{
+					push_top(&xt->stack_b, &xt->stack_a, op_b, xt);
+					sent++;
+				}
+				else
+					rotate_stack(&xt->stack_b, op_b, xt);
+				cnt++;
+			}
+			cnt = 0;
+			add_to_elems(xt->elems->val - sent, xt);
+			sent = 0;
+		}
+		if (get_len(xt->stack_b) <= 3 && xt->stack_b != 0)
+		{
+			cnt = 0;
+			while (cnt++ < xt->elems->val)
+				push_top(&xt->stack_b, &xt->stack_a, op_b, xt);
+			cnt = 0;
+			while (cnt++ < xt->elems->val)
+				rotate_stack(&xt->stack_a, op_a, xt);
+			remove_from_elems(xt);
+		}
+	}
 }
 
 void		sort_stack_quick(t_prop *xt)
@@ -127,7 +176,17 @@ void		sort_stack_quick(t_prop *xt)
 	cnt = 0;
 	get_pivot_val(xt->total, xt, xt->stack_a);
 	split_stack(xt);
-	printf("Curr elem val:%d\n", xt->elems->val);
+	routine_b(xt);
+	routine_a(xt);
+	routine_b(xt);
+	routine_a(xt);
+	routine_b(xt);
+	routine_a(xt);
+	routine_b(xt);
+	routine_a(xt);
+	routine_b(xt);
+	printf("ELEM LIST:");
+	print_elems(xt->elems);
 	printf("STACK A:\n");
 	print_stack(xt->stack_a);
 	printf("STACK B:\n");
