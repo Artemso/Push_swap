@@ -2,6 +2,11 @@
 	"files.associations": {
 		"libft.h": "c",
 		"checker.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"algorithm": "c",
+		"chrono": "c",
+		"limits": "c",
+		"random": "c",
+		"ratio": "c"
 	}
 }

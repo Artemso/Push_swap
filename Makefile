@@ -6,7 +6,7 @@
 #    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/15 13:38:24 by solopov          ###   ########.fr        #
+#    Updated: 2020/01/16 15:36:32 by solopov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ PUSH_SWAP_SRC		= main.c\
 					sort_small.c\
 					sort_quick.c\
 					sorting_disp.c\
+					rev_sort.c\
 					err_manager.c
 
 PUSH_SWAP_FILES		= $(addprefix $(PUSH_SWAP_DIR), $(PUSH_SWAP_SRC))

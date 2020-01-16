@@ -6,7 +6,7 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/15 17:47:08 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/16 15:37:21 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void				sort_stack_med(t_prop *xt);
 void				sort_stack_quick(t_prop *xt);
 void				init_sorting(t_prop *xt);
 int					is_sorted(t_nbr *head);
+void				rev_sort_stack(t_prop *xt);
 
 /*
 ** Extra
