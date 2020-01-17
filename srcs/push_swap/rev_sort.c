@@ -3,41 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   rev_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 15:29:43 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/16 16:00:12 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/17 12:36:44 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	get_max_2(t_nbr *stack)
+int	get_max_2(t_prop *xt, t_nbr *stack)
 {
 	t_nbr	*temp;
-	int		max;
+	int		pos;
 
 	temp = stack;
-	max = temp->val;
+	xt->max = temp->val;
+	pos = 0;
 	while (temp->next != 0)
 	{
-		if (temp->next->val > max)
-			max = temp->next->val;
+		if (temp->next->val > xt->max)
+			xt->max = temp->next->val;
 		temp = temp->next;
+		pos += 1;
 	}
-	return (max);
+	return (pos);
 }
 
 void		rev_sort_stack(t_prop *xt)
 {
-	int max;
-	
+	int pos;
+
 	while (xt->stack_b != 0)
 	{
-		max = get_max_2(xt->stack_b);
-		if (xt->stack_b->val == max)
-			push_top(&xt->stack_b, &xt->stack_a, op_b, xt);
+		pos = get_max_2(xt, xt->stack_b);
+		if (xt->stack_b->val == xt->max)
+			push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
 		else
-			rotate_stack(&xt->stack_b, op_b, xt);
+		{
+			if (pos >= get_len(xt->stack_b) / 2)
+				rrotate_stack(&xt->stack_b, op_b, xt);
+			else
+				rotate_stack(&xt->stack_b, op_b, xt);
+		}
 	}
 }

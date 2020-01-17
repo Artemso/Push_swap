@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/16 15:37:21 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/17 17:31:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void				rev_sort_stack(t_prop *xt);
 ** Extra
 */
 
-void				get_minmax(t_prop *xt, t_nbr *stack);
+void				get_minmax(int len, t_prop *xt, t_nbr *stack);
 void				print_stack(t_nbr *stack);
 void				print_elems(t_elem *stack);
 int					get_len(t_nbr *stack);

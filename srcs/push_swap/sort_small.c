@@ -3,29 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/15 17:46:54 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/17 17:34:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void		get_minmax(t_prop *xt, t_nbr *stack)
+void		get_minmax(int len, t_prop *xt, t_nbr *stack)
 {
+	int		cnt;
 	t_nbr *temp;
 
+	cnt = 0;
 	temp = stack;
 	xt->min = temp->val;
 	xt->max = temp->val;
-	while (temp->next != 0)
+	while (cnt < len - 1)
 	{
 		if (temp->next->val < xt->min)
 			xt->min = temp->next->val;
 		if (temp->next->val > xt->max)
 			xt->max = temp->next->val;
 		temp = temp->next;
+		cnt += 1;
 	}
 }
 
@@ -92,7 +95,7 @@ static void	sort_four(t_prop *xt)
 
 	temp_a = xt->stack_a;
 	temp_b = xt->stack_b;
-	get_minmax(xt, temp_a);
+	get_minmax(get_len(temp_a), xt, temp_a);
 	while (temp_a->val != xt->min)
 		rotate_stack(&temp_a, op_a, xt);
 	push_top(&temp_a, &temp_b, op_a, xt);
@@ -108,7 +111,7 @@ static void	sort_five(t_prop *xt)
 
 	temp_a = xt->stack_a;
 	temp_b = xt->stack_b;
-	get_minmax(xt, temp_a);
+	get_minmax(get_len(temp_a), xt, temp_a);
 	while (temp_a->val != xt->min)
 		rotate_stack(&temp_a, op_a, xt);
 	push_top(&temp_a, &temp_b, op_a, xt);

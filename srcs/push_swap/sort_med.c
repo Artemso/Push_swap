@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:03:10 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/13 18:19:04 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:33:28 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void		sort_stack_med(t_prop *xt)
 
 	temp_a = xt->stack_a;
 	temp_b = xt->stack_b;
-	get_minmax(xt, temp_a);
+	get_minmax(get_len(temp_a), xt, temp_a);
 	x = get_len(temp_a);
 	while (1)
 	{
 		x = get_len(temp_a);
-		get_minmax(xt, temp_a);
+		get_minmax(get_len(temp_a), xt, temp_a);
 		if (temp_a->val == xt->min || x == 1)
 		{
 			push_top(&temp_a, &temp_b, op_a, xt);

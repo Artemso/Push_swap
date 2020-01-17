@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_quick.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/16 16:19:11 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/17 19:43:00 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
 	int		cnt;
 	t_nbr	*temp;
 
-	get_minmax(xt, stack);
+	get_minmax(len, xt, stack);
 	// printf("min:%d\n", xt->min);
 	// printf("max:%d\n", xt->max);
 	cnt = 0;
@@ -78,7 +78,7 @@ static void	split_stack(t_prop *xt)
 		if (xt->stack_a->val < xt->pivot)
 		{
 			//printf("Pushing val:%d\n", xt->stack_a->val);
-			push_top(&xt->stack_a, &xt->stack_b, op_a, xt);
+			push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 			moved += 1;
 		}
 		else
@@ -120,13 +120,33 @@ static void	remove_from_elems(t_prop *xt)
 static void	routine_a(t_prop *xt)
 {
 	int cnt;
+	int sent;
 
 	cnt = 0;
+	sent = 0;
+	get_pivot_val(xt->elems->val, xt, xt->stack_a);
 	while (cnt < xt->elems->val)
 	{
-		push_top(&xt->stack_a, &xt->stack_b, op_a, xt);
+		push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 		cnt++;
 	}
+	// while (cnt < xt->elems->val)
+	// {
+	// 	if (xt->stack_a->val < xt->pivot)
+	// 	{
+	// 		push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
+	// 		sent++;
+	// 	}
+	// 	else
+	// 		rotate_stack(&xt->stack_a, op_a, xt);
+	// 	cnt++;
+	// }
+	// add_to_elems(sent, xt);
+	// while (sent != 0)
+	// {
+	// 	rrotate_stack(&xt->stack_a, op_a, xt);
+	// 	sent--;
+	// }
 }
 
 static void	routine_b(t_prop *xt)
@@ -134,39 +154,34 @@ static void	routine_b(t_prop *xt)
 	int cnt;
 	int sent;
 
-	cnt = 0;
-	sent = 0;
 	while (xt->stack_b != 0)
 	{
-		if (get_len(xt->stack_b) > 3)
+		cnt = 0;
+		sent = 0;
+		if (get_len(xt->stack_b) > 15)
 		{
-			get_pivot_val(xt->elems->val, xt, xt->stack_b);
+			get_pivot_val(get_len(xt->stack_b), xt, xt->stack_b);
 			while (cnt < xt->elems->val)
 			{
 				if (xt->stack_b->val > xt->pivot)
 				{
-					push_top(&xt->stack_b, &xt->stack_a, op_b, xt);
+					push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
 					sent++;
 				}
 				else
 					rotate_stack(&xt->stack_b, op_b, xt);
 				cnt++;
 			}
-			cnt = 0;
-			add_to_elems(xt->elems->val - sent, xt);
-			sent = 0;
+			add_to_elems(sent, xt);
 		}
-		if (get_len(xt->stack_b) <= 10 && xt->stack_b != 0)
+		else
 		{
-			cnt = 0;
-			// printf("STACK B:");
-			// print_stack(xt->stack_b);
 			rev_sort_stack(xt);
-			// while (cnt++ < xt->elems->val)
-			// 	push_top(&xt->stack_b, &xt->stack_a, op_b, xt);
-			cnt = 0;
-			while (cnt++ < xt->elems->val)
+			while (cnt < xt->elems->val)
+			{
 				rotate_stack(&xt->stack_a, op_a, xt);
+				cnt++;
+			}
 			remove_from_elems(xt);
 		}
 	}
@@ -179,21 +194,40 @@ void		sort_stack_quick(t_prop *xt)
 	cnt = 0;
 	get_pivot_val(xt->total, xt, xt->stack_a);
 	split_stack(xt);
-	while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
-	{
-		routine_b(xt);
-		if (xt->elems != 0)
-			routine_a(xt);
-	}
-	// routine_b(xt);
+	// while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
+	// {
+	// 	printf("ROUTINE_B:\n");
+	// 	routine_b(xt);
+	// 	printf("ELEM LIST after b:\n");
+	// 	print_elems(xt->elems);
+	// 	if (xt->elems != 0)
+	// 	{
+	// 		printf("ROUTINE_A:\n");
+	// 		routine_a(xt);
+	// 		printf("ELEM LIST after a:\n");
+	// 		print_elems(xt->elems);
+	// 	}
+	// }
+	routine_b(xt);
+	printf("STACK A:\n");
+	print_stack(xt->stack_a);
+	printf("STACK B:\n");
+	print_stack(xt->stack_b);
+	routine_a(xt);
+	printf("STACK A:\n");
+	print_stack(xt->stack_a);
+	printf("STACK B:\n");
+	print_stack(xt->stack_b);
+	routine_b(xt);
+	printf("STACK A:\n");
+	print_stack(xt->stack_a);
+	printf("STACK B:\n");
+	print_stack(xt->stack_b);
+	routine_a(xt);
+	//routine_b(xt);
 	// routine_a(xt);
-	// routine_b(xt);
-	// routine_a(xt);
-	// routine_b(xt);
-	// routine_a(xt);
-	// routine_b(xt);
-	// printf("ELEM LIST:");
-	// print_elems(xt->elems);
+	printf("ELEM LIST:");
+	print_elems(xt->elems);
 	printf("STACK A:\n");
 	print_stack(xt->stack_a);
 	printf("STACK B:\n");

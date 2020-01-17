@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: solopov <solopov@student.42.fr>            +#+  +:+       +#+         #
+#    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/16 15:36:32 by solopov          ###   ########.fr        #
+#    Updated: 2020/01/17 11:36:08 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ $(PUSH_SWAP_EXE):
 
 $(CHECKER_EXE):
 	@echo "$(RED)Compiling checker...$(RES)"
-	@gcc -o $(CHECKER_EXE) $(CFLAGS) $(LIBFT_A) $(CHECKER_FILES) -L /usr/local/lib -lmlx -I /usr/local/X11/include -L/usr/X11/lib -lX11 -lXext -framework OpenGL -framework Appkit
+	@gcc -o $(CHECKER_EXE) $(CFLAGS) $(LIBFT_A) $(CHECKER_FILES) -L $(MLX_LNK)
 	@echo "$(GREENB)$(CHECKER_EXE) $(GREEN)done.$(RES)"
 
 $(LIBFT_NAME):
