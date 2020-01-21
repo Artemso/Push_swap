@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 18:02:48 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:08:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	locate_min_pos(t_nbr *stack)
 		pos += 1;
 		stack = stack->next;
 	}
-	printf("min pos:%d\n", pos);
+	//printf("min pos:%d\n", pos);
 	return (pos);
 }
 
@@ -82,21 +82,21 @@ void	count_moves_to_fit(t_prop *xt)
 		{
 			if (xt->stack_b->val < xt->min)
 			{
-				printf("Used rule 1 for %d\n", xt->stack_b->val);
+				//printf("Used rule 1 for %d\n", xt->stack_b->val);
 				xt->stack_b->to_fit = minpos;
 				xt->stack_b->type_a = ra;
 				break ;
 			}
 			else if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
 			{
-				printf("Used rule 2 for %d\n", xt->stack_b->val);
+				//printf("Used rule 2 for %d\n", xt->stack_b->val);
 				xt->stack_b->to_fit = xt->stack_a->next->pos;
 				xt->stack_b->type_a = ra;
 				break ;
 			}
 			else if (ST_B->val < ST_A->val && ST_B->val > last_val(ST_A))
 			{
-				printf("Used rule 3 for %d\n", xt->stack_b->val);
+				//printf("Used rule 3 for %d\n", xt->stack_b->val);
 				xt->stack_b->to_fit = 0;
 				xt->stack_b->type_a = ra;
 				break ;

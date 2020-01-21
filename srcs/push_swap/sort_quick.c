@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 18:06:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:09:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ static void	save_push_data(t_prop *xt)
 			xt->push_data->type_a = xt->stack_b->type_a;
 			xt->push_data->type_b = xt->stack_b->type_b;
 			xt->push_data->moves = xt->stack_b->moves;
-			printf("PUSH DATA for %d: %d to_fit %d to_top %d type_a %d type_b\n", xt->stack_b->val, xt->stack_b->to_fit, xt->stack_b->to_top, xt->stack_b->type_a, xt->stack_b->type_b);
+			//printf("PUSH DATA for %d: %d to_fit %d to_top %d type_a %d type_b\n", xt->stack_b->val, xt->stack_b->to_fit, xt->stack_b->to_top, xt->stack_b->type_a, xt->stack_b->type_b);
 		}
 		xt->stack_b = xt->stack_b->next;
 	}
