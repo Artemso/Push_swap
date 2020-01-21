@@ -6,54 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 12:21:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:06:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-static void	find_closestval(int len, t_nbr *stack, t_prop *xt)
-{
-	int cnt;
-	int avg;
-	int prevmax;
-	int prevmin;
-
-	prevmin = xt->min;
-	prevmax = xt->max;
-	cnt = 0;
-	avg = (xt->max + xt->min) / 2;
-	//printf("avg:%d\n", avg);
-	while (cnt < len)
-	{
-		if (stack->val < avg)
-		{
-			if (stack->val + avg > prevmin + avg)
-				prevmin = stack->val;
-		}
-		else if (stack->val >= avg)
-		{
-			if (stack->val - avg < prevmax - avg)
-				prevmax = stack->val;
-		}
-		stack = stack->next;
-		cnt++;
-	}
-	if (prevmax - avg > avg - prevmin)
-		xt->pivot = prevmin;
-	else
-		xt->pivot = prevmax;
-}
-
-static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
-{
-	int		cnt;
-	t_nbr	*temp;
-
-	get_minmax(len, xt, stack);
-	find_closestval(len, stack, xt);
-	printf("Selected pivot:%d\n", xt->pivot);
-}
 
 static void	split_stack(int len, t_prop *xt)
 {
@@ -67,7 +24,6 @@ static void	split_stack(int len, t_prop *xt)
 	{
 		if (xt->stack_a->val < xt->pivot)
 		{
-			printf("Pushing val:%d\n", xt->stack_a->val);
 			push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 			moved += 1;
 		}
@@ -76,39 +32,6 @@ static void	split_stack(int len, t_prop *xt)
 		cnt++;
 	}
 	xt->elems = new_elem(len - moved);
-	//print_elems(xt->elems);
-}
-
-static void	add_to_elems(int value, t_prop *xt)
-{
-	t_elem *head;
-	t_elem *one;
-	t_elem *two;
-
-	head = xt->elems;
-	one = new_elem(value);
-	two = new_elem(xt->elems->val - value);
-	one->next = two;
-	two->next = head->next;
-	xt->elems = one;
-}
-
-static void	remove_from_elems(t_prop *xt)
-{
-	t_elem *head;
-
-	if (xt->elems->next != 0)
-	{
-		head = xt->elems->next;
-		xt->elems = head;
-	}
-	else
-		xt->elems = 0;
-}
-
-static void	routine_a(t_prop *xt)
-{
-	//split_stack();
 }
 
 static void	set_positions(t_prop *xt)
@@ -135,72 +58,6 @@ static void	set_positions(t_prop *xt)
 		xt->stack_a = xt->stack_a->next;
 	}
 	xt->stack_a = head_a;
-}
-
-static void	count_moves_to_top(t_prop *xt)
-{
-	t_nbr	*head;
-	int		len;
-
-	head = xt->stack_b;
-	len = get_len(xt->stack_b);
-	while (xt->stack_b != 0)
-	{
-		if (xt->stack_b->pos <= len / 2)
-		{
-			xt->stack_b->to_top = xt->stack_b->pos;
-			xt->stack_b->type_b = rrb;
-		}
-
-		else
-		{
-			xt->stack_b->to_top = len - xt->stack_b->pos;
-			xt->stack_b->type_b = rb;
-		}
-		xt->stack_b = xt->stack_b->next;
-	}
-	xt->stack_b = head;
-}
-
-static void	count_moves_to_fit(t_prop *xt)
-{
-	int moves;
-	t_nbr *head_a;
-	t_nbr *head_b;
-
-	head_a = xt->stack_a;
-	head_b = xt->stack_b;
-	get_minmax(xt->elems->val, xt, xt->stack_a);
-	printf("ELEMS:\n");
-	print_elems(xt->elems);
-	while (xt->stack_b != 0)
-	{
-		moves = 0;
-		xt->stack_a = head_a;
-		while (xt->stack_a->next != 0)
-		{
-			if (xt->stack_b->val < xt->min)
-				xt->stack_b->to_fit = 0;
-			else if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
-			{
-				if (moves <= xt->elems->val / 2)
-				{
-					xt->stack_b->to_fit = moves;
-					xt->stack_b->type_a = rra;
-				}
-				else
-				{
-					xt->stack_b->to_fit = xt->elems->val - moves;
-					xt->stack_b->type_a = ra;
-				}
-			}
-			xt->stack_a = xt->stack_a->next;
-			moves += 1;
-		}
-		xt->stack_b = xt->stack_b->next;
-	}
-	xt->stack_a = head_a;
-	xt->stack_b = head_b;
 }
 
 static void	combine_moves(t_prop *xt)
@@ -263,6 +120,129 @@ static void	compare_moves(t_prop *xt)
 	xt->stack_b = head_b;
 }
 
+static void	save_push_data(t_prop *xt)
+{
+	t_nbr	*head_b;
+
+	xt->push_data = malloc(sizeof(t_push));
+	head_b = xt->stack_b;
+	while (xt->stack_b != 0)
+	{
+		if (xt->stack_b->pushme == 1)
+		{
+			xt->push_data->to_fit = xt->stack_b->to_fit;
+			xt->push_data->to_top = xt->stack_b->to_top;
+			xt->push_data->type_a = xt->stack_b->type_a;
+			xt->push_data->type_b = xt->stack_b->type_b;
+			xt->push_data->moves = xt->stack_b->moves;
+			printf("PUSH DATA for %d: %d to_fit %d to_top %d type_a %d type_b\n", xt->stack_b->val, xt->stack_b->to_fit, xt->stack_b->to_top, xt->stack_b->type_a, xt->stack_b->type_b);
+		}
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_b = head_b;
+}
+
+static void	push_val(t_prop *xt)
+{
+	int cnt;
+
+	cnt = 0;
+	if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rb)
+	{
+		if (xt->push_data->to_top < xt->push_data->to_fit)
+		{
+			while (cnt < xt->push_data->to_top)
+			{
+				rotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+				cnt++;
+			}
+			while (cnt < xt->push_data->to_fit)
+			{
+				rotate_stack(&xt->stack_a, op_a, xt);
+				cnt++;
+			}
+			push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+		}
+		else
+		{
+			while (cnt < xt->push_data->to_fit)
+			{
+				rotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+				cnt++;
+			}
+
+			while (cnt < xt->push_data->to_top)
+			{
+				rotate_stack(&xt->stack_b, op_b, xt);
+				cnt++;
+			}
+			push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+		}
+	}
+	else if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rrb)
+	{
+		while (cnt < xt->push_data->to_top)
+		{
+			rrotate_stack(&xt->stack_b, op_b, xt);
+			cnt++;
+		}
+		cnt = 0;
+		while (cnt < xt->push_data->to_fit)
+		{
+			rotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
+		push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+	}
+	else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rb)
+	{
+		while (cnt < xt->push_data->to_top)
+		{
+			rrotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
+		cnt = 0;
+		while (cnt < xt->push_data->to_fit)
+		{
+			rotate_stack(&xt->stack_b, op_b, xt);
+			cnt++;
+		}
+		push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+	}
+	else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rrb)
+	{
+		if (xt->push_data->to_top < xt->push_data->to_fit)
+		{
+			while (cnt < xt->push_data->to_top)
+			{
+				rrotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+				cnt++;
+			}
+
+			while (cnt < xt->push_data->to_fit)
+			{
+				rrotate_stack(&xt->stack_a, op_a, xt);
+				cnt++;
+			}
+			push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+		}
+		else
+		{
+			while (cnt < xt->push_data->to_fit)
+			{
+				rrotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+				cnt++;
+			}
+			while (cnt++ < xt->push_data->to_top)
+			{
+				rrotate_stack(&xt->stack_b, op_b, xt);
+				cnt++;
+			}
+			push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
+		}
+	}
+}
+
 static void	select_to_push(t_prop *xt)
 {
 	int pos;
@@ -272,33 +252,46 @@ static void	select_to_push(t_prop *xt)
 	count_moves_to_fit(xt);
 	combine_moves(xt);
 	compare_moves(xt);
+	save_push_data(xt);
 }
 
 static void	routine_b(t_prop *xt)
 {
+	int len;
 	int cnt;
-	int rot;
-	int pos;
 
+	len = get_len(xt->stack_b);
 	cnt = 0;
-	select_to_push(xt);
-	push(xt);
+	while (cnt < 7)
+	{
+		select_to_push(xt);
+		push_val(xt);
+		cnt++;
+	}
+	//select_to_push(xt);
+	//push_val(xt);
 	// while (xt->stack_b != 0)
 	// {
 	// 	select_to_push(xt);
-	// 	push(xt);
+	// 	push_val(xt);
 	// }
+	// while (len-- > 0)
+	// 	rotate_stack(&xt->stack_a, op_a, xt);
 }
+
+static void	routine_a(t_prop *xt)
+{
+	split_stack(xt->elems->val, xt);
+}
+
 
 void		sort_stack_quick(t_prop *xt)
 {
 	split_stack(xt->total, xt);
-	// xt->elems->val = xt->total - 1;
-	// push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 	routine_b(xt);
-	printf("Stack A:\n");
+	printf("STACK A:\n");
 	print_stack(xt->stack_a);
-	printf("Stack B:\n");
+	printf("STACK B:\n");
 	print_stack(xt->stack_b);
 	// while (!(is_sorted(xt->stack_a) == 0 && xt->stack_b == 0))
 	// {

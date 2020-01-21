@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 12:08:25 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:46:44 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ typedef struct		s_elem
 ** Push_Swap struct
 */
 
+typedef struct		s_push
+{
+	int				to_top;
+	int				to_fit;
+	int				type_a;
+	int				type_b;
+	int				moves;
+	int				pushed;
+}					t_push;
+
 typedef struct		s_prop
 {
 	t_nbr			*stack_a;
@@ -86,6 +96,7 @@ typedef struct		s_prop
 
 	int				pivot;
 	t_elem			*elems;
+	t_push			*push_data;
 
 	char			*str;
 }					t_prop;
@@ -143,5 +154,10 @@ void				print_stack(t_nbr *stack);
 void				print_elems(t_elem *stack);
 int					get_len(t_nbr *stack);
 t_elem				*new_elem(int content);
+
+void	count_moves_to_fit(t_prop *xt);
+void	count_moves_to_top(t_prop *xt);
+void	get_pivot_val(int len, t_prop *xt, t_nbr *stack);
+int		get_min(t_nbr *stack);
 
 #endif
