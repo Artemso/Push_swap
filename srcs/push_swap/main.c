@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/20 16:39:19 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:19:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void		print_stack(t_nbr *stack)
 	{
 		printf("Number:%d\n", temp->val);
 		printf("pos:%d\n", temp->pos);
-		printf("type:%d\n", temp->type);
+		printf("type:%d\n", temp->type_a);
 		printf("moves to top:%d\n", temp->to_top);
-		printf("moves to fit:%d\n\n", temp->to_fit);
+		printf("moves to fit:%d\n", temp->to_fit);
+		printf("PUSHME:%d\n\n", temp->pushme);
 		temp = temp->next;
 	}
 	printf("\n");

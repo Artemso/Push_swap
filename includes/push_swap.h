@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/20 16:31:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:08:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ typedef enum	e_moves
 {
 	rb = 0,
 	rrb,
-	rarb,
-	rrarrb,
-	rarrb,
-	rrarb
+	ra,
+	rra
 }				t_moves;
 
 /*
@@ -61,7 +59,10 @@ typedef struct		s_nbr
 	int				to_top;
 	int				to_fit;
 	int				pos;
-	int				type;
+	int				moves;
+	int				pushme;
+	int				type_a;
+	int				type_b;
 	struct s_nbr	*next;
 }					t_nbr;
 

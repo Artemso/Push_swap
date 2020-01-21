@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 10:36:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 12:21:18 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,19 @@ static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
 	printf("Selected pivot:%d\n", xt->pivot);
 }
 
-static void	split_stack(t_prop *xt)
+static void	split_stack(int len, t_prop *xt)
 {
 	int cnt;
 	int moved;
 
 	cnt = 0;
 	moved = 0;
-	while (cnt < xt->total)
+	get_pivot_val(len, xt, xt->stack_a);
+	while (cnt < len)
 	{
 		if (xt->stack_a->val < xt->pivot)
 		{
-			//printf("Pushing val:%d\n", xt->stack_a->val);
+			printf("Pushing val:%d\n", xt->stack_a->val);
 			push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 			moved += 1;
 		}
@@ -74,8 +75,7 @@ static void	split_stack(t_prop *xt)
 			rotate_stack(&xt->stack_a, op_a, xt);
 		cnt++;
 	}
-	xt->elems= new_elem(moved);
-	xt->elems->next = new_elem(xt->total - moved);
+	xt->elems = new_elem(len - moved);
 	//print_elems(xt->elems);
 }
 
@@ -108,8 +108,7 @@ static void	remove_from_elems(t_prop *xt)
 
 static void	routine_a(t_prop *xt)
 {
-	get_pivot_val(xt->elems->val, xt, xt->stack_a);
-	//split_stack_new(xexe);
+	//split_stack();
 }
 
 static void	set_positions(t_prop *xt)
@@ -118,7 +117,7 @@ static void	set_positions(t_prop *xt)
 	t_nbr	*head_a;
 	int		cnt;
 
-	cnt = 1;
+	cnt = 0;
 	head_b = xt->stack_b;
 	while (xt->stack_b != 0)
 	{
@@ -127,7 +126,7 @@ static void	set_positions(t_prop *xt)
 		xt->stack_b = xt->stack_b->next;
 	}
 	xt->stack_b = head_b;
-	cnt = 1;
+	cnt = 0;
 	head_a = xt->stack_a;
 	while (xt->stack_a != 0)
 	{
@@ -147,16 +146,16 @@ static void	count_moves_to_top(t_prop *xt)
 	len = get_len(xt->stack_b);
 	while (xt->stack_b != 0)
 	{
-		if (xt->stack_b->pos < len / 2)
+		if (xt->stack_b->pos <= len / 2)
 		{
-			xt->stack_b->to_top = xt->stack_b->pos - 1;
-			xt->stack_b->type = rrb;
+			xt->stack_b->to_top = xt->stack_b->pos;
+			xt->stack_b->type_b = rrb;
 		}
 
 		else
 		{
-			xt->stack_b->to_top = len - xt->stack_b->pos + 1;
-			xt->stack_b->type = rb;
+			xt->stack_b->to_top = len - xt->stack_b->pos;
+			xt->stack_b->type_b = rb;
 		}
 		xt->stack_b = xt->stack_b->next;
 	}
@@ -165,40 +164,38 @@ static void	count_moves_to_top(t_prop *xt)
 
 static void	count_moves_to_fit(t_prop *xt)
 {
-	t_nbr	*head_a;
-	t_nbr	*head_b;
-	int		len;
+	int moves;
+	t_nbr *head_a;
+	t_nbr *head_b;
 
-	len = get_len(xt->stack_b);
 	head_a = xt->stack_a;
 	head_b = xt->stack_b;
+	get_minmax(xt->elems->val, xt, xt->stack_a);
+	printf("ELEMS:\n");
+	print_elems(xt->elems);
 	while (xt->stack_b != 0)
 	{
+		moves = 0;
 		xt->stack_a = head_a;
-		while (xt->stack_a != 0)
+		while (xt->stack_a->next != 0)
 		{
-			if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
+			if (xt->stack_b->val < xt->min)
+				xt->stack_b->to_fit = 0;
+			else if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
 			{
-				if (xt->stack_a->pos < len / 2)
+				if (moves <= xt->elems->val / 2)
 				{
-					xt->stack_b->to_fit = xt->stack_a->pos - 1;
-					if (xt->stack_b->type == rb)
-						xt->stack_b->type = rarb;
-					else if (xt->stack_b->type == rrb)
-						xt->stack_b->type = rarrb;
+					xt->stack_b->to_fit = moves;
+					xt->stack_b->type_a = rra;
 				}
 				else
 				{
-					xt->stack_b->to_fit = len - xt->stack_a->pos + 1;
-					if (xt->stack_b->type == rb)
-						xt->stack_b->type = rrarb;
-					else if (xt->stack_b->type == rrb)
-						xt->stack_b->type = rrarrb;
+					xt->stack_b->to_fit = xt->elems->val - moves;
+					xt->stack_b->type_a = ra;
 				}
 			}
-			else if (xt->stack_b->val < xt->stack_a->val)
-				xt->stack_b->to_fit = xt->stack_a->pos - 1;
 			xt->stack_a = xt->stack_a->next;
+			moves += 1;
 		}
 		xt->stack_b = xt->stack_b->next;
 	}
@@ -206,15 +203,75 @@ static void	count_moves_to_fit(t_prop *xt)
 	xt->stack_b = head_b;
 }
 
-static int	select_to_push(t_prop *xt)
+static void	combine_moves(t_prop *xt)
+{
+	t_nbr	*head_b;
+
+	head_b = xt->stack_b;
+	while (xt->stack_b != 0)
+	{
+		if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rb)
+		{
+			if (xt->stack_b->to_top > xt->stack_b->to_fit)
+				xt->stack_b->moves = xt->stack_b->to_top;
+			else
+				xt->stack_b->moves = xt->stack_b->to_fit;
+		}
+		else if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rrb)
+		{
+			xt->stack_b->moves = xt->stack_b->to_top + xt->stack_b->to_fit;
+		}
+		else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rb)
+		{
+			xt->stack_b->moves = xt->stack_b->to_top + xt->stack_b->to_fit;
+		}
+		else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rrb)
+		{
+			if (xt->stack_b->to_top > xt->stack_b->to_fit)
+				xt->stack_b->moves = xt->stack_b->to_top;
+			else
+				xt->stack_b->moves = xt->stack_b->to_fit;
+		}
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_b = head_b;
+}
+
+static void	compare_moves(t_prop *xt)
+{
+	t_nbr	*head_b;
+	int		movmin;
+	int		posmin;
+	int		cnt;
+
+	movmin = xt->stack_b->moves;
+	posmin = 0;
+	head_b = xt->stack_b;
+	while (xt->stack_b != 0)
+	{
+		if (xt->stack_b->moves < movmin)
+			posmin = xt->stack_b->pos;
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_b = head_b;
+	while (xt->stack_b != 0)
+	{
+		if (posmin == xt->stack_b->pos)
+			xt->stack_b->pushme = 1;
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_b = head_b;
+}
+
+static void	select_to_push(t_prop *xt)
 {
 	int pos;
-	
+
 	set_positions(xt);
 	count_moves_to_top(xt);
 	count_moves_to_fit(xt);
-	// pos = compare_moves(xt);
-	// return (pos);
+	combine_moves(xt);
+	compare_moves(xt);
 }
 
 static void	routine_b(t_prop *xt)
@@ -225,7 +282,7 @@ static void	routine_b(t_prop *xt)
 
 	cnt = 0;
 	select_to_push(xt);
-	//push(pos, xt);
+	push(xt);
 	// while (xt->stack_b != 0)
 	// {
 	// 	select_to_push(xt);
@@ -235,8 +292,9 @@ static void	routine_b(t_prop *xt)
 
 void		sort_stack_quick(t_prop *xt)
 {
-	get_pivot_val(xt->total, xt, xt->stack_a);
-	split_stack(xt);
+	split_stack(xt->total, xt);
+	// xt->elems->val = xt->total - 1;
+	// push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
 	routine_b(xt);
 	printf("Stack A:\n");
 	print_stack(xt->stack_a);
