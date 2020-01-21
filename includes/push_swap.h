@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/17 17:31:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:31:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ typedef enum	e_opers
 	op_ab
 }				t_opers;
 
+typedef enum	e_moves
+{
+	rb = 0,
+	rrb,
+	rarb,
+	rrarrb,
+	rarrb,
+	rrarb
+}				t_moves;
+
 /*
 ** Linked List struct
 */
@@ -48,6 +58,10 @@ typedef enum	e_opers
 typedef struct		s_nbr
 {
 	int				val;
+	int				to_top;
+	int				to_fit;
+	int				pos;
+	int				type;
 	struct s_nbr	*next;
 }					t_nbr;
 

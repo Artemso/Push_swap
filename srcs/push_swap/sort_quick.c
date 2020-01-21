@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/17 19:43:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/21 10:36:00 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,8 @@ static void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
 	t_nbr	*temp;
 
 	get_minmax(len, xt, stack);
-	// printf("min:%d\n", xt->min);
-	// printf("max:%d\n", xt->max);
-	cnt = 0;
-	// temp = stack;
-	// while (cnt < len)
-	// {
-	// 	if (temp->next == 0)
-	// 		xt->pivot = temp->val;
-	// 	temp = temp->next;
-	// 	cnt++;
-	// }
 	find_closestval(len, stack, xt);
-	//printf("Selected pivot:%d\n", xt->pivot);
+	printf("Selected pivot:%d\n", xt->pivot);
 }
 
 static void	split_stack(t_prop *xt)
@@ -119,117 +108,144 @@ static void	remove_from_elems(t_prop *xt)
 
 static void	routine_a(t_prop *xt)
 {
-	int cnt;
-	int sent;
-
-	cnt = 0;
-	sent = 0;
 	get_pivot_val(xt->elems->val, xt, xt->stack_a);
-	while (cnt < xt->elems->val)
+	//split_stack_new(xexe);
+}
+
+static void	set_positions(t_prop *xt)
+{
+	t_nbr	*head_b;
+	t_nbr	*head_a;
+	int		cnt;
+
+	cnt = 1;
+	head_b = xt->stack_b;
+	while (xt->stack_b != 0)
 	{
-		push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
-		cnt++;
+		xt->stack_b->pos = cnt;
+		cnt += 1;
+		xt->stack_b = xt->stack_b->next;
 	}
-	// while (cnt < xt->elems->val)
-	// {
-	// 	if (xt->stack_a->val < xt->pivot)
-	// 	{
-	// 		push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
-	// 		sent++;
-	// 	}
-	// 	else
-	// 		rotate_stack(&xt->stack_a, op_a, xt);
-	// 	cnt++;
-	// }
-	// add_to_elems(sent, xt);
-	// while (sent != 0)
-	// {
-	// 	rrotate_stack(&xt->stack_a, op_a, xt);
-	// 	sent--;
-	// }
+	xt->stack_b = head_b;
+	cnt = 1;
+	head_a = xt->stack_a;
+	while (xt->stack_a != 0)
+	{
+		xt->stack_a->pos = cnt;
+		cnt += 1;
+		xt->stack_a = xt->stack_a->next;
+	}
+	xt->stack_a = head_a;
+}
+
+static void	count_moves_to_top(t_prop *xt)
+{
+	t_nbr	*head;
+	int		len;
+
+	head = xt->stack_b;
+	len = get_len(xt->stack_b);
+	while (xt->stack_b != 0)
+	{
+		if (xt->stack_b->pos < len / 2)
+		{
+			xt->stack_b->to_top = xt->stack_b->pos - 1;
+			xt->stack_b->type = rrb;
+		}
+
+		else
+		{
+			xt->stack_b->to_top = len - xt->stack_b->pos + 1;
+			xt->stack_b->type = rb;
+		}
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_b = head;
+}
+
+static void	count_moves_to_fit(t_prop *xt)
+{
+	t_nbr	*head_a;
+	t_nbr	*head_b;
+	int		len;
+
+	len = get_len(xt->stack_b);
+	head_a = xt->stack_a;
+	head_b = xt->stack_b;
+	while (xt->stack_b != 0)
+	{
+		xt->stack_a = head_a;
+		while (xt->stack_a != 0)
+		{
+			if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
+			{
+				if (xt->stack_a->pos < len / 2)
+				{
+					xt->stack_b->to_fit = xt->stack_a->pos - 1;
+					if (xt->stack_b->type == rb)
+						xt->stack_b->type = rarb;
+					else if (xt->stack_b->type == rrb)
+						xt->stack_b->type = rarrb;
+				}
+				else
+				{
+					xt->stack_b->to_fit = len - xt->stack_a->pos + 1;
+					if (xt->stack_b->type == rb)
+						xt->stack_b->type = rrarb;
+					else if (xt->stack_b->type == rrb)
+						xt->stack_b->type = rrarrb;
+				}
+			}
+			else if (xt->stack_b->val < xt->stack_a->val)
+				xt->stack_b->to_fit = xt->stack_a->pos - 1;
+			xt->stack_a = xt->stack_a->next;
+		}
+		xt->stack_b = xt->stack_b->next;
+	}
+	xt->stack_a = head_a;
+	xt->stack_b = head_b;
+}
+
+static int	select_to_push(t_prop *xt)
+{
+	int pos;
+	
+	set_positions(xt);
+	count_moves_to_top(xt);
+	count_moves_to_fit(xt);
+	// pos = compare_moves(xt);
+	// return (pos);
 }
 
 static void	routine_b(t_prop *xt)
 {
 	int cnt;
-	int sent;
+	int rot;
+	int pos;
 
-	while (xt->stack_b != 0)
-	{
-		cnt = 0;
-		sent = 0;
-		if (get_len(xt->stack_b) > 15)
-		{
-			get_pivot_val(get_len(xt->stack_b), xt, xt->stack_b);
-			while (cnt < xt->elems->val)
-			{
-				if (xt->stack_b->val > xt->pivot)
-				{
-					push_top(&xt->stack_b, &xt->stack_a, op_a, xt);
-					sent++;
-				}
-				else
-					rotate_stack(&xt->stack_b, op_b, xt);
-				cnt++;
-			}
-			add_to_elems(sent, xt);
-		}
-		else
-		{
-			rev_sort_stack(xt);
-			while (cnt < xt->elems->val)
-			{
-				rotate_stack(&xt->stack_a, op_a, xt);
-				cnt++;
-			}
-			remove_from_elems(xt);
-		}
-	}
+	cnt = 0;
+	select_to_push(xt);
+	//push(pos, xt);
+	// while (xt->stack_b != 0)
+	// {
+	// 	select_to_push(xt);
+	// 	push(xt);
+	// }
 }
 
 void		sort_stack_quick(t_prop *xt)
 {
-	int cnt;
-
-	cnt = 0;
 	get_pivot_val(xt->total, xt, xt->stack_a);
 	split_stack(xt);
-	// while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
+	routine_b(xt);
+	printf("Stack A:\n");
+	print_stack(xt->stack_a);
+	printf("Stack B:\n");
+	print_stack(xt->stack_b);
+	// while (!(is_sorted(xt->stack_a) == 0 && xt->stack_b == 0))
 	// {
-	// 	printf("ROUTINE_B:\n");
 	// 	routine_b(xt);
-	// 	printf("ELEM LIST after b:\n");
-	// 	print_elems(xt->elems);
-	// 	if (xt->elems != 0)
-	// 	{
-	// 		printf("ROUTINE_A:\n");
+	// 	if (xt->elems->val != 0)
 	// 		routine_a(xt);
-	// 		printf("ELEM LIST after a:\n");
-	// 		print_elems(xt->elems);
-	// 	}
 	// }
-	routine_b(xt);
-	printf("STACK A:\n");
-	print_stack(xt->stack_a);
-	printf("STACK B:\n");
-	print_stack(xt->stack_b);
-	routine_a(xt);
-	printf("STACK A:\n");
-	print_stack(xt->stack_a);
-	printf("STACK B:\n");
-	print_stack(xt->stack_b);
-	routine_b(xt);
-	printf("STACK A:\n");
-	print_stack(xt->stack_a);
-	printf("STACK B:\n");
-	print_stack(xt->stack_b);
-	routine_a(xt);
-	//routine_b(xt);
-	// routine_a(xt);
-	printf("ELEM LIST:");
-	print_elems(xt->elems);
-	printf("STACK A:\n");
-	print_stack(xt->stack_a);
-	printf("STACK B:\n");
-	print_stack(xt->stack_b);
 }

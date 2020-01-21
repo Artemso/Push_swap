@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/15 13:55:23 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/20 16:39:19 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void		print_stack(t_nbr *stack)
 	temp = stack;
 	while (temp != 0)
 	{
-		printf("%d ", temp->val);
+		printf("Number:%d\n", temp->val);
+		printf("pos:%d\n", temp->pos);
+		printf("type:%d\n", temp->type);
+		printf("moves to top:%d\n", temp->to_top);
+		printf("moves to fit:%d\n\n", temp->to_fit);
 		temp = temp->next;
 	}
 	printf("\n");
