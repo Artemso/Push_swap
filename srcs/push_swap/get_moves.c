@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 18:08:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/22 12:31:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,40 +65,60 @@ static int	locate_min_pos(t_nbr *stack)
 	return (pos);
 }
 
+static int	locate_max_pos(t_nbr *stack)
+{
+	int max;
+	int pos;
+
+	pos = 0;
+	max = get_max(stack);
+	while (stack->val != max)
+	{
+		pos += 1;
+		stack = stack->next;
+	}
+	//printf("max pos:%d\n", pos);
+	return (pos);
+}
+
 void	count_moves_to_fit(t_prop *xt)
 {
 	t_nbr	*head_a;
 	t_nbr	*head_b;
 	int		minpos;
+	int		maxpos;
+	int		len;
 
+	len = get_len(xt->stack_a);
 	head_a = xt->stack_a;
 	head_b = xt->stack_b;
-	get_minmax(get_len(xt->stack_a), xt, xt->stack_a);
+	get_minmax(len, xt, xt->stack_a);
 	minpos = locate_min_pos(xt->stack_a);
+	maxpos = locate_max_pos(xt->stack_a);
 	while (xt->stack_b != 0)
 	{
 		xt->stack_a = head_a;
 		while (xt->stack_a->next != 0)
 		{
-			if (xt->stack_b->val < xt->min)
+			if (xt->stack_b->val > xt->max)
 			{
-				//printf("Used rule 1 for %d\n", xt->stack_b->val);
-				xt->stack_b->to_fit = minpos;
-				xt->stack_b->type_a = ra;
+				rule_max(maxpos, len, xt);
 				break ;
 			}
-			else if (xt->stack_b->val > xt->stack_a->val && xt->stack_b->val < xt->stack_a->next->val)
+			else if (xt->stack_b->val < xt->min)
 			{
-				//printf("Used rule 2 for %d\n", xt->stack_b->val);
-				xt->stack_b->to_fit = xt->stack_a->next->pos;
-				xt->stack_b->type_a = ra;
+				rule_min(minpos, len, xt);
+				break ;
+			}
+			else if (ST_B->val > ST_A->val && ST_B->val < ST_A->next->val)
+			{
+				rule_insertion(len, xt);
 				break ;
 			}
 			else if (ST_B->val < ST_A->val && ST_B->val > last_val(ST_A))
 			{
-				//printf("Used rule 3 for %d\n", xt->stack_b->val);
 				xt->stack_b->to_fit = 0;
-				xt->stack_b->type_a = ra;
+				xt->stack_b->type_a = rra;
 				break ;
 			}
 			xt->stack_a = xt->stack_a->next;

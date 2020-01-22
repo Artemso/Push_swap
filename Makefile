@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/21 14:47:36 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/22 12:22:45 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ PUSH_SWAP_EXE		=	push_swap
 
 PUSH_SWAP_SRC		= main.c\
 					extra.c\
+					conditions.c\
+					to_fit_rules.c\
 					get_input.c\
 					process_input.c\
 					swap_top.c\

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/21 17:46:35 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/22 10:37:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,6 @@ int	get_min(t_nbr *stack)
 		temp = temp->next;
 	}
 	return (min);
-}
-
-t_elem	*new_elem(int content)
-{
-	t_elem	*node;
-
-	if (!(node = (t_elem *)malloc(sizeof(t_elem))))
-		ft_puterr(er_mem);
-	node->val = content;
-	node->next = NULL;
-	return (node);
 }
 
 void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
