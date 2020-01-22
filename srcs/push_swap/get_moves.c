@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 12:31:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:08:12 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	count_moves_to_top(t_prop *xt)
 			xt->stack_b->to_top = xt->stack_b->pos;
 			xt->stack_b->type_b = rb;
 		}
-
 		else
 		{
 			xt->stack_b->to_top = len - xt->stack_b->pos;

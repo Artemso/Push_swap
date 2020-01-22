@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 12:40:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/22 14:07:00 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ static void	compare_moves(t_prop *xt)
 	while (xt->stack_b->next != 0)
 	{
 		if (xt->stack_b->next->moves < movmin)
+		{
+			movmin = xt->stack_b->next->moves;
 			posmin = xt->stack_b->next->pos;
+		}
 		xt->stack_b = xt->stack_b->next;
 	}
 	xt->stack_b = head_b;
@@ -217,12 +220,29 @@ static void	routine_a(t_prop *xt)
 void		sort_stack_quick(t_prop *xt)
 {
 	split_stack(xt->total, xt);
-	routine_b(xt);
-	split_stack(xt->store, xt);
-	// while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
-	// {
-	// 	routine_b(xt);
-	// 	if (xt->store != 0)
-	// 		routine_a(xt);
-	// }
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// push_val(xt);
+	// select_to_push(xt);
+	// printf("STACK_A:\n");
+	// print_stack(xt->stack_a);
+	// printf("STACK_B:\n");
+	// print_stack(xt->stack_b);
+	while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
+	{
+		routine_b(xt);
+		if (xt->store != 0)
+			routine_a(xt);
+	}
 }
