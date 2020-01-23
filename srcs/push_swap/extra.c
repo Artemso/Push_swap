@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 10:37:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:29:33 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,14 @@ int	get_len(t_nbr *stack)
 
 int	get_max(t_nbr *stack)
 {
-	t_nbr	*temp;
 	int		max;
 
-	temp = stack;
-	max = temp->val;
-	while (temp->next != 0)
+	max = stack->val;
+	while (stack->next != 0)
 	{
-		if (temp->next->val > max)
-			max = temp->next->val;
-		temp = temp->next;
+		if (stack->next->val > max)
+			max = stack->next->val;
+		stack = stack->next;
 	}
 	return (max);
 }

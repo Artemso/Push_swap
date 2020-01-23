@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 13:08:12 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:20:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int	locate_min_pos(t_nbr *stack)
 		pos += 1;
 		stack = stack->next;
 	}
-	//printf("min pos:%d\n", pos);
 	return (pos);
 }
 
@@ -76,7 +75,6 @@ static int	locate_max_pos(t_nbr *stack)
 		pos += 1;
 		stack = stack->next;
 	}
-	//printf("max pos:%d\n", pos);
 	return (pos);
 }
 

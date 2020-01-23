@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 14:04:54 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:55:55 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_prop(t_prop *xt)
 {
 	xt->stack_a = 0;
 	xt->stack_b = 0;
+	xt->push_data = (t_push *)malloc(sizeof(t_push));
 }
 
 void		print_stack(t_nbr *stack)
@@ -35,6 +36,20 @@ void		print_stack(t_nbr *stack)
 		temp = temp->next;
 	}
 	printf("\n");
+}
+
+static void	free_mem(t_prop *xt)
+{
+	t_nbr *temp;
+
+	while (xt->stack_a->next != 0)
+	{
+		temp = xt->stack_a->next;
+		free(xt->stack_a);
+		xt->stack_a = temp;
+	}
+	free(xt->push_data);
+	free(xt);
 }
 
 int		main(int argc, char **argv)
@@ -64,6 +79,7 @@ int		main(int argc, char **argv)
 	else
 		ft_puterr(er_usg);
 	process_input(xt);
-	init_sorting(xt);
+	sort_stack_quick(xt);
+	free_mem(xt);
 	return (0);
 }

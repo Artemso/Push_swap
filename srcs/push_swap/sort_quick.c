@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 14:07:00 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:56:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ static void	save_push_data(t_prop *xt)
 {
 	t_nbr	*head_b;
 
-	xt->push_data = malloc(sizeof(t_push));
 	head_b = xt->stack_b;
 	while (xt->stack_b != 0)
 	{
@@ -136,7 +135,6 @@ static void	save_push_data(t_prop *xt)
 			xt->push_data->to_top = xt->stack_b->to_top;
 			xt->push_data->type_a = xt->stack_b->type_a;
 			xt->push_data->type_b = xt->stack_b->type_b;
-			//printf("PUSH DATA for %d: %d to_fit %d to_top %d type_a %d type_b\n", xt->stack_b->val, xt->stack_b->to_fit, xt->stack_b->to_top, xt->stack_b->type_a, xt->stack_b->type_b);
 		}
 		xt->stack_b = xt->stack_b->next;
 	}
@@ -187,6 +185,7 @@ static void	routine_b(t_prop *xt)
 	int cnt;
 	int	max_b;
 	int	pos;
+	int	len;
 
 	max_b = get_max(xt->stack_b);
 	cnt = 0;
@@ -195,17 +194,64 @@ static void	routine_b(t_prop *xt)
 		select_to_push(xt);
 		push_val(xt);
 	}
+	len = get_len(xt->stack_a);
 	pos = get_n_pos(max_b, xt->stack_a);
-	while (cnt < pos + 1)
+	if (pos <= len / 2)
 	{
-		rotate_stack(&xt->stack_a, op_a, xt);
-		cnt++;
+		while (cnt < pos + 1)
+		{
+			rotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
+	}
+	else
+	{
+		while (cnt < len - pos - 1)
+		{
+			rrotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
 	}
 }
 
+static void	routine_b_med(t_prop *xt)
+{
+	int cnt;
+	int	max_a;
+	int	pos;
+	int	len;
+
+	cnt = 0;
+	while (xt->stack_b != 0)
+	{
+		select_to_push(xt);
+		push_val(xt);
+	}
+	max_a = get_max(xt->stack_a);
+	len = get_len(xt->stack_a);
+	pos = get_n_pos(max_a, xt->stack_a);
+	if (pos <= len / 2)
+	{
+		while (cnt < pos + 1)
+		{
+			rotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
+	}
+	else
+	{
+		while (cnt < len - pos - 1)
+		{
+			rrotate_stack(&xt->stack_a, op_a, xt);
+			cnt++;
+		}
+	}
+}
+
+
 static void	routine_a(t_prop *xt)
 {
-	if (xt->store > 20)
+	if (xt->store > 100)
 		split_stack(xt->store, xt);
 	else
 	{
@@ -219,30 +265,29 @@ static void	routine_a(t_prop *xt)
 
 void		sort_stack_quick(t_prop *xt)
 {
-	split_stack(xt->total, xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// push_val(xt);
-	// select_to_push(xt);
-	// printf("STACK_A:\n");
-	// print_stack(xt->stack_a);
-	// printf("STACK_B:\n");
-	// print_stack(xt->stack_b);
-	while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
+	int cnt;
+
+	cnt = 0;
+	if (xt->total > 250)
 	{
-		routine_b(xt);
-		if (xt->store != 0)
-			routine_a(xt);
+		split_stack(xt->total, xt);
+		while (!(is_sorted(xt->stack_a) == 1 && xt->stack_b == 0))
+		{
+			routine_b(xt);
+			if (xt->store != 0)
+				routine_a(xt);
+		}
 	}
+	else
+	{
+		while (cnt < xt->total - 3)
+		{
+			push_top(&xt->stack_a, &xt->stack_b, op_b, xt);
+			cnt++;
+		}
+		if (get_len(xt->stack_a) == 3)
+			sort_three(&xt->stack_a, xt);
+		routine_b_med(xt);
+	}
+	free_mem(xt);
 }

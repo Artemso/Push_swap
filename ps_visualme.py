@@ -151,7 +151,7 @@ class TestGui(Tk):
 	def play_sequence(self):
 		while len(self.cmds) > 0 and self.playback:
 			self.one_step()
-			sleep(0.1)
+			# sleep(0.05)
 	
 	def reset_sequence(self):
 		cont = self.playback
