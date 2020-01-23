@@ -6,19 +6,17 @@
 /*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 21:55:33 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/23 22:02:56 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	count_moves_to_top(t_prop *xt)
+void	count_moves_to_top(int len, t_prop *xt)
 {
 	t_nbr	*head;
-	int		len;
 
 	head = xt->stack_b;
-	len = get_len(xt->stack_b);
 	while (xt->stack_b != 0)
 	{
 		if (xt->stack_b->pos <= len / 2)
@@ -84,20 +82,11 @@ static int	select_move(int maxpos, int minpos, int len, t_prop *xt)
 
 	ret = 0;
 	if (xt->stack_b->val > xt->max)
-	{
-		rule_max(maxpos, len, xt);
-		ret = 1;
-	}
+		ret = rule_max(maxpos, len, xt);
 	else if (xt->stack_b->val < xt->min)
-	{
-		rule_min(minpos, len, xt);
-		ret = 1;
-	}
+		ret = rule_min(minpos, len, xt);
 	else if (ST_B->val > ST_A->val && ST_B->val < ST_A->next->val)
-	{
-		rule_insertion(len, xt);
-		ret = 1;
-	}
+		ret = rule_insertion(len, xt);
 	else if (ST_B->val < ST_A->val && ST_B->val > last_val(ST_A))
 	{
 		xt->stack_b->to_fit = 0;
@@ -107,15 +96,13 @@ static int	select_move(int maxpos, int minpos, int len, t_prop *xt)
 	return (ret);
 }
 
-void		count_moves_to_fit(t_prop *xt)
+void		count_moves_to_fit(int len, t_prop *xt)
 {
 	t_nbr	*head_a;
 	t_nbr	*head_b;
 	int		minpos;
 	int		maxpos;
-	int		len;
 
-	len = get_len(xt->stack_a);
 	head_a = xt->stack_a;
 	head_b = xt->stack_b;
 	get_minmax(len, xt, xt->stack_a);

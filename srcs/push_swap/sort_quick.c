@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_quick.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 14:56:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 22:13:18 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,34 +64,30 @@ static void	combine_moves(t_prop *xt)
 {
 	t_nbr	*head_b;
 
-	head_b = xt->stack_b;
-	while (xt->stack_b != 0)
+	head_b = ST_B;
+	while (ST_B != 0)
 	{
-		if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rb)
+		if (ST_B->type_a == ra && ST_B->type_b == rb)
 		{
-			if (xt->stack_b->to_top > xt->stack_b->to_fit)
-				xt->stack_b->moves = xt->stack_b->to_top;
+			if (ST_B->to_top > ST_B->to_fit)
+				ST_B->moves = ST_B->to_top;
 			else
-				xt->stack_b->moves = xt->stack_b->to_fit;
+				ST_B->moves = ST_B->to_fit;
 		}
-		else if (xt->stack_b->type_a == ra && xt->stack_b->type_b == rrb)
+		else if (ST_B->type_a == ra && ST_B->type_b == rrb)
+			ST_B->moves = ST_B->to_top + ST_B->to_fit;
+		else if (ST_B->type_a == rra && ST_B->type_b == rb)
+			ST_B->moves = ST_B->to_top + ST_B->to_fit;
+		else if (ST_B->type_a == rra && ST_B->type_b == rrb)
 		{
-			xt->stack_b->moves = xt->stack_b->to_top + xt->stack_b->to_fit;
-		}
-		else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rb)
-		{
-			xt->stack_b->moves = xt->stack_b->to_top + xt->stack_b->to_fit;
-		}
-		else if (xt->stack_b->type_a == rra && xt->stack_b->type_b == rrb)
-		{
-			if (xt->stack_b->to_top > xt->stack_b->to_fit)
-				xt->stack_b->moves = xt->stack_b->to_top;
+			if (ST_B->to_top > ST_B->to_fit)
+				ST_B->moves = ST_B->to_top;
 			else
-				xt->stack_b->moves = xt->stack_b->to_fit;
+				ST_B->moves = ST_B->to_fit;
 		}
-		xt->stack_b = xt->stack_b->next;
+		ST_B = ST_B->next;
 	}
-	xt->stack_b = head_b;
+	ST_B = head_b;
 }
 
 static void	compare_moves(t_prop *xt)
@@ -155,11 +151,14 @@ static void	push_val(t_prop *xt)
 
 static void	select_to_push(t_prop *xt)
 {
-	int pos;
+	int	len_a;
+	int	len_b;
 
+	len_a = get_len(xt->stack_a);
+	len_b = get_len(xt->stack_b);
 	set_positions(xt);
-	count_moves_to_top(xt);
-	count_moves_to_fit(xt);
+	count_moves_to_top(len_b, xt);
+	count_moves_to_fit(len_a, xt);
 	combine_moves(xt);
 	compare_moves(xt);
 	save_push_data(xt);
@@ -203,7 +202,7 @@ static void	routine_b(t_prop *xt)
 			rotate_stack(&xt->stack_a, op_a, xt);
 			cnt++;
 		}
-	}
+	} // maybe separate this
 	else
 	{
 		while (cnt < len - pos - 1)
@@ -211,7 +210,7 @@ static void	routine_b(t_prop *xt)
 			rrotate_stack(&xt->stack_a, op_a, xt);
 			cnt++;
 		}
-	}
+	} // maybe separate this
 }
 
 static void	routine_b_med(t_prop *xt)
@@ -236,7 +235,7 @@ static void	routine_b_med(t_prop *xt)
 		{
 			rotate_stack(&xt->stack_a, op_a, xt);
 			cnt++;
-		}
+		} // maybe separate this
 	}
 	else
 	{
@@ -244,10 +243,9 @@ static void	routine_b_med(t_prop *xt)
 		{
 			rrotate_stack(&xt->stack_a, op_a, xt);
 			cnt++;
-		}
+		} // maybe separate this
 	}
 }
-
 
 static void	routine_a(t_prop *xt)
 {
@@ -277,7 +275,7 @@ void		sort_stack_quick(t_prop *xt)
 			if (xt->store != 0)
 				routine_a(xt);
 		}
-	}
+	} //sort 250
 	else
 	{
 		while (cnt < xt->total - 3)
@@ -288,6 +286,6 @@ void		sort_stack_quick(t_prop *xt)
 		if (get_len(xt->stack_a) == 3)
 			sort_three(&xt->stack_a, xt);
 		routine_b_med(xt);
-	}
+	} //sort smaller
 	free_mem(xt);
 }
