@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 17:32:01 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:05:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		rotate_stack(t_nbr **stack, t_prop *xt)
 	xt->steps_taken += 1;
 }
 
-void		rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+void		rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt)
 {
 	rotate(stack);
 	rotate(stack2);

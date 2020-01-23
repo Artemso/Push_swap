@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 17:40:35 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 17:42:13 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:01:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 
-int	is_sorted(t_nbr *head)
+int		is_sorted(t_nbr *head)
 {
 	t_nbr *temp;
 

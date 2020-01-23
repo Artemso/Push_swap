@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 12:23:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:03:59 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,11 +121,11 @@ void				process_input(t_prop *xt);
 t_nbr				*new_node(int content);
 void				push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt);
 void				rotate_stack(t_nbr **stack, int op, t_prop *xt);
-void				rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 void				rrotate_stack(t_nbr **stack, int op, t_prop *xt);
-void				rrotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 void				swap_top(t_nbr **stack, int op, t_prop *xt);
-void				swap_top_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				swap_top_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 
 /*
 ** Stack Sorting
@@ -148,19 +148,20 @@ int					get_max(t_nbr *stack);
 void				print_stack(t_nbr *stack);
 int					get_len(t_nbr *stack);
 
-void	count_moves_to_fit(t_prop *xt);
-void	count_moves_to_top(t_prop *xt);
-void	get_pivot_val(int len, t_prop *xt, t_nbr *stack);
-int		get_min(t_nbr *stack);
+void				count_moves_to_fit(t_prop *xt);
+void				count_moves_to_top(t_prop *xt);
+void				get_pivot_val(int len, t_prop *xt, t_nbr *stack);
+int					get_min(t_nbr *stack);
 
+void				ra_rb(t_prop *xt);
+void				ra_rrb(t_prop *xt);
+void				rra_rb(t_prop *xt);
+void				rra_rrb(t_prop *xt);
 
-void	ra_rb(t_prop *xt);
-void	ra_rrb(t_prop *xt);
-void	rra_rb(t_prop *xt);
-void	rra_rrb(t_prop *xt);
+void				rule_insertion(int len, t_prop *xt);
+void				rule_min(int minpos, int len, t_prop *xt);
+void				rule_max(int maxpos, int len, t_prop *xt);
 
-void	rule_insertion(int len, t_prop *xt);
-void	rule_min(int minpos, int len, t_prop *xt);
-void	rule_max(int maxpos, int len, t_prop *xt);
+void				free_mem(t_prop *xt);
 
 #endif

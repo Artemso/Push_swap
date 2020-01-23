@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/14 10:51:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:05:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@
 ** Enum for Error Handling
 */
 
-typedef enum	e_errors
+typedef enum		e_errors
 {
 	er_mem = 0,
 	er_usg,
 	er_inp
-}				t_errors;
+}					t_errors;
 
 /*
 ** Enum for Operations, op_a move to b, op_b move to a
 */
 
-typedef enum	e_opers
+typedef enum		e_opers
 {
 	op_a = 0,
 	op_b,
 	op_ab
-}				t_opers;
+}					t_opers;
 
 /*
 ** Linked List struct
@@ -96,11 +96,11 @@ void				process_input(t_prop *xt);
 t_nbr				*new_node(int content);
 void				push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 void				rotate_stack(t_nbr **stack, t_prop *xt);
-void				rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 void				rrotate_stack(t_nbr	**stack, t_prop *xt);
-void				rrotate_stack_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
+void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
 void				swap_top(t_nbr	**stack, t_prop *xt);
-void				swap_top_two(t_nbr	**stack, t_nbr	**stack2, t_prop *xt);
+void				swap_top_2(t_nbr **stack, t_nbr	**stack2, t_prop *xt);
 
 /*
 ** Validation

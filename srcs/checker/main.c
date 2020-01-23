@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:24:13 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/11 15:11:36 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:02:13 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int			main(int argc, char **argv)
 		check_str(xt->str);
 	}
 	process_input(xt);
-	visualise(xt);
+	//visualise(xt);
 	check_stacks(xt);
 }

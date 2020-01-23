@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/08 11:08:27 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:00:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		rotate_stack(t_nbr **stack, int op, t_prop *xt)
 		ft_putstr("rb\n");
 }
 
-void		rotate_stack_two(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+void		rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt)
 {
 	rotate(stack);
 	rotate(stack2);

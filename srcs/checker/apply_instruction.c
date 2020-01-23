@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_instruction.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 17:34:33 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/08 15:22:49 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/23 15:08:22 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	check_swap(char *line, t_prop *xt)
 	else if (ft_strcmp(line, "sb") == 0)
 		swap_top(&xt->stack_b, xt);
 	else if (ft_strcmp(line, "ss") == 0)
-		swap_top_two(&xt->stack_a, &xt->stack_b, xt);
+		swap_top_2(&xt->stack_a, &xt->stack_b, xt);
 }
 
 static void	check_rotate(char *line, t_prop *xt)
@@ -29,7 +29,7 @@ static void	check_rotate(char *line, t_prop *xt)
 	else if (ft_strcmp(line, "rb") == 0)
 		rotate_stack(&xt->stack_b, xt);
 	else if (ft_strcmp(line, "rr") == 0)
-		rotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+		rotate_stack_2(&xt->stack_a, &xt->stack_b, xt);
 }
 
 static void	check_rrotate(char *line, t_prop *xt)
@@ -39,7 +39,7 @@ static void	check_rrotate(char *line, t_prop *xt)
 	else if (ft_strcmp(line, "rrb") == 0)
 		rrotate_stack(&xt->stack_b, xt);
 	else if (ft_strcmp(line, "rrr") == 0)
-		rrotate_stack_two(&xt->stack_a, &xt->stack_b, xt);
+		rrotate_stack_2(&xt->stack_a, &xt->stack_b, xt);
 }
 
 static void	check_push(char *line, t_prop *xt)
