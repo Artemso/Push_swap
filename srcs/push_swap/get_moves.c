@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 14:20:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:55:33 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,36 @@ static int	locate_max_pos(t_nbr *stack)
 	return (pos);
 }
 
-void	count_moves_to_fit(t_prop *xt)
+static int	select_move(int maxpos, int minpos, int len, t_prop *xt)
+{
+	int ret;
+
+	ret = 0;
+	if (xt->stack_b->val > xt->max)
+	{
+		rule_max(maxpos, len, xt);
+		ret = 1;
+	}
+	else if (xt->stack_b->val < xt->min)
+	{
+		rule_min(minpos, len, xt);
+		ret = 1;
+	}
+	else if (ST_B->val > ST_A->val && ST_B->val < ST_A->next->val)
+	{
+		rule_insertion(len, xt);
+		ret = 1;
+	}
+	else if (ST_B->val < ST_A->val && ST_B->val > last_val(ST_A))
+	{
+		xt->stack_b->to_fit = 0;
+		xt->stack_b->type_a = rra;
+		ret = 1;
+	}
+	return (ret);
+}
+
+void		count_moves_to_fit(t_prop *xt)
 {
 	t_nbr	*head_a;
 	t_nbr	*head_b;
@@ -97,27 +126,8 @@ void	count_moves_to_fit(t_prop *xt)
 		xt->stack_a = head_a;
 		while (xt->stack_a->next != 0)
 		{
-			if (xt->stack_b->val > xt->max)
-			{
-				rule_max(maxpos, len, xt);
+			if (select_move(maxpos, minpos, len , xt) == 1)
 				break ;
-			}
-			else if (xt->stack_b->val < xt->min)
-			{
-				rule_min(minpos, len, xt);
-				break ;
-			}
-			else if (ST_B->val > ST_A->val && ST_B->val < ST_A->next->val)
-			{
-				rule_insertion(len, xt);
-				break ;
-			}
-			else if (ST_B->val < ST_A->val && ST_B->val > last_val(ST_A))
-			{
-				xt->stack_b->to_fit = 0;
-				xt->stack_b->type_a = rra;
-				break ;
-			}
 			xt->stack_a = xt->stack_a->next;
 		}
 		xt->stack_b = xt->stack_b->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 14:29:33 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:34:56 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	find_closestval(int len, t_nbr *stack, t_prop *xt)
 	prevmax = xt->max;
 	cnt = 0;
 	avg = (xt->max + xt->min) / 2;
-	//printf("avg:%d\n", avg);
 	while (cnt < len)
 	{
 		if (stack->val < avg)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 14:55:55 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/23 21:36:31 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	init_prop(t_prop *xt)
 {
 	xt->stack_a = 0;
 	xt->stack_b = 0;
-	xt->push_data = (t_push *)malloc(sizeof(t_push));
+	if (!(xt->push_data = (t_push *)malloc(sizeof(t_push))))
+		ft_puterr(er_mem);
 }
 
 void		print_stack(t_nbr *stack)
@@ -38,7 +39,7 @@ void		print_stack(t_nbr *stack)
 	printf("\n");
 }
 
-static void	free_mem(t_prop *xt)
+void	free_mem(t_prop *xt)
 {
 	t_nbr *temp;
 
@@ -80,6 +81,5 @@ int		main(int argc, char **argv)
 		ft_puterr(er_usg);
 	process_input(xt);
 	sort_stack_quick(xt);
-	free_mem(xt);
 	return (0);
 }
