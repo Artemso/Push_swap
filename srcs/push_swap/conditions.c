@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   conditions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:55:42 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/22 12:02:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/24 09:26:55 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ra_rb(t_prop *xt)
+void		ra_rb(t_prop *xt)
 {
 	int cnt;
 
