@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small.c                                       :+:      :+:    :+:   */
+/*   sort_three_vals.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 18:26:54 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:08:14 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:01:16 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int		is_sorted(t_nbr *head)
 		temp = T_NXT;
 	}
 	return (1);
+}
+
+void	sort_two(t_nbr **stack)
+{
+	if (is_sorted(*stack) != 1)
+		swap_top(stack, op_a);
 }
 
 void	sort_three(t_nbr **stack)

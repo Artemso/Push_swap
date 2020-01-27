@@ -6,13 +6,14 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/15 15:25:28 by asolopov          #+#    #+#              #
-#    Updated: 2019/12/25 16:23:44 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 14:43:30 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 SRCS = ft_atoi.c \
+		ft_atoll.c\
 		ft_bzero.c \
 		ft_isalnum.c \
 		ft_isalpha.c \

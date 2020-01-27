@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   input_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 10:41:48 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/27 14:54:07 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void		check_str(char *input)
+void	check_str(char *input)
 {
 	int	x;
 
@@ -25,7 +25,41 @@ void		check_str(char *input)
 	}
 }
 
-void		arg_to_str(char *input, t_prop *xt)
+void	check_duplicates(t_prop *xt)
+{
+	t_nbr	*copy;
+	t_nbr	*temp;
+	t_nbr	*head;
+
+	temp = xt->stack_a;
+	head = temp;
+	while (temp != 0)
+	{
+		copy = temp;
+		while (copy->next != 0)
+		{
+			if (temp->val == copy->next->val)
+				ft_puterr(er_inp);
+			copy = copy->next;
+		}
+		temp = temp->next;
+	}
+}
+
+void	check_stack(t_prop *xt)
+{
+	t_nbr	*temp;
+
+	temp = xt->stack_a;
+	while (temp != 0)
+	{
+		if (temp->val > 2147483647 || temp->val < -2147483648)
+			ft_puterr(er_inp);
+		temp = temp->next;
+	}
+}
+
+void	arg_to_str(char *input, t_prop *xt)
 {
 	ft_safestrjoin(&xt->str, input, 0);
 	ft_safestrjoin(&xt->str, " ", 0);

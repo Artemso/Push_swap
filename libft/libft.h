@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 15:25:04 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/18 13:29:30 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:43:47 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char				*ft_strrchr(const char *s, int c);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 int					ft_atoi(const char *str);
+long long			ft_atoll(const char *str);
 
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);

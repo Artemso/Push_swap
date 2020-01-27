@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:24:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:01:53 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef enum	e_moves
 
 typedef struct		s_nbr
 {
-	int				val;
+	long long		val;
 	int				to_top;
 	int				to_fit;
 	int				pos;
@@ -100,10 +100,12 @@ typedef struct		s_prop
 ** Process Input, Errors and Memory
 */
 
-t_nbr				*new_node(int content);
+t_nbr				*new_node(long long content);
 void				check_str(char *input);
+void				check_stack(t_prop *xt);
 void				arg_to_str(char *input, t_prop *xt);
 void				process_input(t_prop *xt);
+void				check_duplicates(t_prop *xt);
 void				ft_puterr(int x);
 void				free_mem(t_prop *xt);
 
@@ -143,6 +145,7 @@ void				select_to_push(t_prop *xt);
 void				push_val(t_prop *xt);
 void				split_stack(int len, t_prop *xt);
 
+void				sort_two(t_nbr **stack);
 void				sort_three(t_nbr **stack);
 void				sort_stack_quick(t_prop *xt);
 void				init_sorting(t_prop *xt);
