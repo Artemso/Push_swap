@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 17:22:20 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:28:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	init_prop(t_prop *xt)
 {
 	xt->stack_a = 0;
 	xt->stack_b = 0;
-	xt->steps_taken = 0;
 }
 
 int			check_flag(int argc, char **argv)
@@ -34,6 +33,7 @@ int			check_flag(int argc, char **argv)
 void		print_stack(t_nbr *stack)
 {
 	t_nbr *temp;
+	
 	temp = stack;
 	while (temp != 0)
 	{
@@ -47,7 +47,7 @@ static void	run_visual(t_prop *xt)
 {
 	check_str(xt->str);
 	process_input(xt);
-	//visualise(xt);
+	visualise(xt);
 }
 
 static void	run_checker(t_prop *xt)

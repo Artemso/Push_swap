@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/27 16:10:21 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:20:26 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,15 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include "mlx.h"
-# define ST_A	xt->stack_a
-# define ST_B	xt->stack_b
+
+# define ST_A		xt->stack_a
+# define ST_B		xt->stack_b
+# define XT_IMG		xt->img_ptr
+# define XT_MLX		xt->mlx_ptr
+# define XT_IDATA	xt->img_data
+# define XT_WIN		xt->win_ptr
+# define WID		1920
+# define HEI		1080
 
 /*
 ** Enum for Error Handling
@@ -63,8 +70,8 @@ typedef struct		s_prop
 	int				min;
 	int				max;
 	char			*str;
-	int				steps_taken;
-	int				run_cnt;
+	int				width;
+	int				max_val;
 
 	void			*mlx_ptr;
 	void			*win_ptr;
@@ -120,7 +127,6 @@ void				check_stacks(t_prop *xt);
 
 void				visualise(t_prop *xt);
 int					key_hook_press(int keycode, t_prop *xt);
-int					draw_stack(t_prop *xt, t_nbr *stack);
-int					draw_stack_2(t_prop *xt, t_nbr *stack);
+void				draw_stack(t_prop *xt, t_nbr *stack, int x);
 
 #endif

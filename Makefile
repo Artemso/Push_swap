@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/27 16:31:23 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 17:46:53 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,9 @@ CHECKER_SRC			= main.c\
 					ops_rotate_stack.c\
 					ops_rrotate_stack.c\
 					ops_swap_top.c\
-					check_stack.c
+					check_stack.c\
+					visualiser.c\
+					controls.c
 					# push_top.c\
 					# rotate_stack.c\
 					# rrotate_stack.c\
