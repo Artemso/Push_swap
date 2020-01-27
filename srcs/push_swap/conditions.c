@@ -6,13 +6,13 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 11:55:42 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 15:03:32 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:57:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ra_rb(t_prop *xt)
+void		ra_rb(t_prop *xt)
 {
 	int cnt;
 

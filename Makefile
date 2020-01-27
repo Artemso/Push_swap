@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/23 14:22:39 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 12:55:06 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ PUSH_SWAP_SRC		= main.c\
 					rotate_stack.c\
 					rrotate_stack.c\
 					get_moves.c\
-					sort_med.c\
 					sort_small.c\
 					sort_quick.c\
 					rev_sort.c\
@@ -71,6 +70,7 @@ LIBFT_DIR			= ./libft/
 LIBFT_NAME			= libft.a
 LIBFT_A				= $(addprefix $(LIBFT_DIR), $(LIBFT_NAME))
 MLX_LNK				= /usr/local/lib/ -l mlx -framework OpenGL -framework AppKit
+MLX_HOME			= /usr/local/lib -lmlx -I /usr/local/X11/include -L/usr/X11/lib -lX11 -lXext -framework OpenGL -framework Appkit
 
 .PHONY: all clean fclean re
 

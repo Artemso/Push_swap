@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 15:03:59 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 12:55:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
-# define ST_A xt->stack_a
-# define ST_B xt->stack_b
+# define ST_A	xt->stack_a
+# define ST_B	xt->stack_b
+# define T_NXT	temp->next
+# define T_VAL	temp->val
 
 /*
 ** Enum for Error Handling
@@ -148,8 +150,8 @@ int					get_max(t_nbr *stack);
 void				print_stack(t_nbr *stack);
 int					get_len(t_nbr *stack);
 
-void				count_moves_to_fit(t_prop *xt);
-void				count_moves_to_top(t_prop *xt);
+void				count_moves_to_fit(int len, t_prop *xt);
+void				count_moves_to_top(int len, t_prop *xt);
 void				get_pivot_val(int len, t_prop *xt, t_nbr *stack);
 int					get_min(t_nbr *stack);
 
@@ -158,9 +160,14 @@ void				ra_rrb(t_prop *xt);
 void				rra_rb(t_prop *xt);
 void				rra_rrb(t_prop *xt);
 
-void				rule_insertion(int len, t_prop *xt);
-void				rule_min(int minpos, int len, t_prop *xt);
-void				rule_max(int maxpos, int len, t_prop *xt);
+void				ra_rb(t_prop *xt);
+void				ra_rrb(t_prop *xt);
+void				rra_rb(t_prop *xt);
+void				rra_rrb(t_prop *xt);
+
+int					rule_insertion(int len, t_prop *xt);
+int					rule_min(int minpos, int len, t_prop *xt);
+int					rule_max(int maxpos, int len, t_prop *xt);
 
 void				free_mem(t_prop *xt);
 

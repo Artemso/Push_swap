@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 15:30:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 10:41:48 by solopov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		check_str(char *input)
 	x = 0;
 	while (input[x] != '\0')
 	{
-		if (!(input[x] == ' ' || ft_isdigit(input[x])))
+		if (!(input[x] == ' ' || ft_isdigit(input[x]) || input[x] == '-'))
 			ft_puterr(er_inp);
 		x++;
 	}
