@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 13:57:48 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:24:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,20 @@ typedef struct		s_prop
 }					t_prop;
 
 /*
-** Error Management
-*/
-
-void				ft_puterr(int x);
-
-/*
-** Process Input
-*/
-
-void				check_str(char *input);
-void				arg_to_str(char *input, t_prop *xt);
-void				process_input(t_prop *xt);
-
-/*
-** Stack Manipulation
+** Process Input, Errors and Memory
 */
 
 t_nbr				*new_node(int content);
+void				check_str(char *input);
+void				arg_to_str(char *input, t_prop *xt);
+void				process_input(t_prop *xt);
+void				ft_puterr(int x);
+void				free_mem(t_prop *xt);
+
+/*
+** Stack Operations
+*/
+
 void				push_top(t_nbr **stack, t_nbr **stack2, int op);
 void				rotate_stack(t_nbr **stack, int op);
 void				rotate_stack_2(t_nbr **stack, t_nbr **stack2);
@@ -133,14 +129,28 @@ int					get_max(t_nbr *stack);
 int					get_len(t_nbr *stack);
 int					get_n_pos(int nb, t_nbr *stack);
 
+
+void				save_push_data(t_prop *xt);
+void				compare_moves(t_prop *xt);
+void				combine_moves(t_prop *xt);
+void				set_positions(t_prop *xt);
+void				select_to_push(t_prop *xt);
+
 /*
 ** Stack Sorting
 */
+
+void				push_val(t_prop *xt);
+void				split_stack(int len, t_prop *xt);
 
 void				sort_three(t_nbr **stack);
 void				sort_stack_quick(t_prop *xt);
 void				init_sorting(t_prop *xt);
 int					is_sorted(t_nbr *head);
+
+void				routine_b_nosplit(t_prop *xt);
+void				routine_b_split(t_prop *xt);
+void				routine_a(t_prop *xt);
 
 void				rotate_ra_rb_totop(t_prop *xt);
 void				rotate_ra_rb_tofit(t_prop *xt);
@@ -165,8 +175,6 @@ void				rra_rrb(t_prop *xt);
 int					rule_insertion(int len, t_prop *xt);
 int					rule_min(int minpos, int len, t_prop *xt);
 int					rule_max(int maxpos, int len, t_prop *xt);
-
-void				free_mem(t_prop *xt);
 
 int					locate_max_pos(t_nbr *stack);
 int					locate_min_pos(t_nbr *stack);

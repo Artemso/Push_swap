@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_quick.c                                       :+:      :+:    :+:   */
+/*   sort_quick_insert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:05:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:23:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	split_stack(int len, t_prop *xt)
+void		split_stack(int len, t_prop *xt)
 {
 	int cnt;
 	int moved;
@@ -34,7 +34,7 @@ static void	split_stack(int len, t_prop *xt)
 	xt->store = len - moved;
 }
 
-static void	select_to_push(t_prop *xt)
+void		select_to_push(t_prop *xt)
 {
 	int	len_a;
 	int	len_b;

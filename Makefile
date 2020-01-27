@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/27 13:38:15 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 14:24:46 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,31 +20,33 @@ RED			=	\033[0;31m
 
 # PUSH_SWAP files
 
-PUSH_SWAP_EXE		=	push_swap
+PUSH_SWAP_EXE		= push_swap
 
 PUSH_SWAP_SRC		= main.c\
-					extra.c\
-					conditions.c\
-					to_fit_rules.c\
-					get_input.c\
-					process_input.c\
-					swap_top.c\
-					push_top.c\
-					rotate_stack.c\
-					rrotate_stack.c\
-					get_moves.c\
-					sort_small.c\
-					sort_quick.c\
-					rotations.c\
 					err_manager.c\
-					get_stack_data.c\
-					get_pivot.c
+					extra.c\
+					input_processing.c\
+					input_tools.c\
+					ops_push_top.c\
+					ops_rotate_stack.c\
+					ops_rrotate_stack.c\
+					ops_swap_top.c\
+					sort_conditions.c\
+					sort_quick_insert.c\
+					sort_rotations.c\
+					sort_routines.c\
+					sort_three_vals.c\
+					sort_tofit_rules.c\
+					stack_data.c\
+					stack_get_moves.c\
+					stack_get_pivot.c\
+					stack_push_data.c
 
 PUSH_SWAP_FILES		= $(addprefix $(PUSH_SWAP_DIR), $(PUSH_SWAP_SRC))
 
 # CHECKER files
 
-CHECKER_EXE			=	checker
+CHECKER_EXE			= checker
 
 CHECKER_SRC			= main.c\
 					get_input.c\
