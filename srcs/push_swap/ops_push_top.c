@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_top.c                                         :+:      :+:    :+:   */
+/*   ops_push_top.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 13:39:03 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:10:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 
 void		push_top(t_nbr **stack, t_nbr **stack2, int op)
 {
-	push_node(stack, stack2);
-	if (op == op_a)
-		ft_putstr("pa\n");
-	else if (op == op_b)
-		ft_putstr("pb\n");
+	if ((*stack))
+	{
+		push_node(stack, stack2);
+		if (op == op_a)
+			ft_putstr("pa\n");
+		else if (op == op_b)
+			ft_putstr("pb\n");
+	}
 }

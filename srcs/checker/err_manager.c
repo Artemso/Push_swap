@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2019/12/25 17:02:18 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:20:47 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_puterr(int x)
 {
 	if (x == er_usg)
 	{
-		ft_putstr("Usage: sosi zalupu.\n");
+		ft_putstr("Usage:\n./checker \"Argument String\"/ Argument List\n");
 		exit(0);
 	}
 	else if (x == er_inp)

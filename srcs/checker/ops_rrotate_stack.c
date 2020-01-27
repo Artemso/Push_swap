@@ -1,49 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_rotate_stack.c                                 :+:      :+:    :+:   */
+/*   ops_rrotate_stack.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 17:18:31 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 17:26:44 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/27 17:16:46 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker.h"
 
-static void	rotate(t_nbr **head)
+static void	rrotate(t_nbr **stack)
 {
-	t_nbr	*curr;
-	t_nbr	*rotme;
+	t_nbr	*slow;
+	t_nbr	*fast;
 
-	rotme = *head;
-	curr = *head;
-	*head = curr->next;
-	while (curr->next != 0)
-		curr = curr->next;
-	rotme->next = 0;
-	curr->next = rotme;
+	slow = 0;
+	fast = *stack;
+	while (fast->next != 0)
+	{
+		slow = fast;
+		fast = fast->next;
+	}
+	slow->next = 0;
+	fast->next = *stack;
+	*stack = fast;
 }
 
-void		rotate_stack(t_nbr **stack, int op)
+void		rrotate_stack(t_nbr **stack)
 {
 	if ((*stack) && (*stack)->next)
-	{
-		rotate(stack);
-		if (op == op_a)
-			ft_putstr("ra\n");
-		else if (op == op_b)
-			ft_putstr("rb\n");
-	}
+		rrotate(stack);
 }
 
-void		rotate_stack_2(t_nbr **stack, t_nbr **stack2)
+void		rrotate_stack_2(t_nbr **stack, t_nbr **stack2)
 {
 	if ((*stack)->next && (*stack2)->next && (*stack) && (stack2))
 	{
-		rotate(stack);
-		rotate(stack2);
-		ft_putstr("rr\n");
+		rrotate(stack);
+		rrotate(stack2);
 	}
 }

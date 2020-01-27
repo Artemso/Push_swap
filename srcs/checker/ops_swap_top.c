@@ -1,49 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_rotate_stack.c                                 :+:      :+:    :+:   */
+/*   ops_swap_top.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 17:18:31 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/27 17:16:34 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker.h"
 
-static void	rotate(t_nbr **head)
+static void	swap_nodes(t_nbr **head)
 {
-	t_nbr	*curr;
-	t_nbr	*rotme;
+	t_nbr	*second;
+	t_nbr	*temp;
 
-	rotme = *head;
-	curr = *head;
-	*head = curr->next;
-	while (curr->next != 0)
-		curr = curr->next;
-	rotme->next = 0;
-	curr->next = rotme;
+	temp = *head;
+	second = temp->next;
+	temp->next = second->next;
+	second->next = temp;
+	*head = second;
 }
 
-void		rotate_stack(t_nbr **stack, int op)
+void		swap_top(t_nbr **stack)
 {
 	if ((*stack) && (*stack)->next)
-	{
-		rotate(stack);
-		if (op == op_a)
-			ft_putstr("ra\n");
-		else if (op == op_b)
-			ft_putstr("rb\n");
-	}
+		swap_nodes(stack);
 }
 
-void		rotate_stack_2(t_nbr **stack, t_nbr **stack2)
+void		swap_top_2(t_nbr **stack, t_nbr **stack2)
 {
 	if ((*stack)->next && (*stack2)->next && (*stack) && (stack2))
 	{
-		rotate(stack);
-		rotate(stack2);
-		ft_putstr("rr\n");
+		swap_nodes(stack);
+		swap_nodes(stack2);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/23 15:05:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:10:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 # include "mlx.h"
+# define ST_A	xt->stack_a
+# define ST_B	xt->stack_b
 
 /*
 ** Enum for Error Handling
@@ -88,19 +90,22 @@ void				arg_to_str(char *input, t_prop *xt);
 */
 
 void				process_input(t_prop *xt);
+void				check_duplicates(t_prop *xt);
+void				check_stack(t_prop *xt);
 
 /*
 ** Stack Manipulation
 */
 
-t_nbr				*new_node(int content);
-void				push_top(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rotate_stack(t_nbr **stack, t_prop *xt);
-void				rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rrotate_stack(t_nbr	**stack, t_prop *xt);
-void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				swap_top(t_nbr	**stack, t_prop *xt);
-void				swap_top_2(t_nbr **stack, t_nbr	**stack2, t_prop *xt);
+t_nbr				*new_node(long long content);
+void		push_top(t_nbr **stack, t_nbr **stack2);
+void		rotate_stack(t_nbr **stack);
+void		rotate_stack_2(t_nbr **stack, t_nbr **stack2);
+void		swap_top(t_nbr **stack);
+void		swap_top_2(t_nbr **stack, t_nbr **stack2);
+void		rrotate_stack(t_nbr **stack);
+void		rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
+
 
 /*
 ** Validation

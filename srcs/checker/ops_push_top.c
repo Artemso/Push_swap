@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err_manager.c                                      :+:      :+:    :+:   */
+/*   ops_push_top.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 15:19:01 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/27 17:06:36 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker.h"
 
-void	ft_puterr(int x)
+static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 {
-	if (x == er_usg)
+	t_nbr	*temp;
+
+	temp = *stack_1;
+	*stack_1 = (*stack_1)->next;
+	if ((*stack_2) == 0)
 	{
-		ft_putstr("Usage:\n./push_swap \"Argument String\"/ Argument List\n");
-		exit(0);
+		*stack_2 = temp;
+		(*stack_2)->next = 0;
 	}
-	else if (x == er_inp)
+	else
 	{
-		ft_putstr("Error\n");
-		exit(0);
+		temp->next = *stack_2;
+		*stack_2 = temp;
 	}
-	else if (x == er_mem)
-	{
-		ft_putstr("Memory Error\n");
-		exit(0);
-	}
+}
+
+void		push_top(t_nbr **stack, t_nbr **stack2)
+{
+	if ((*stack))
+		push_node(stack, stack2);
 }

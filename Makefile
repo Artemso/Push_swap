@@ -6,13 +6,13 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/27 15:02:58 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 16:31:23 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Flags 'n colors
 
-CFLAGS		=	-O3 -Wall -Wextra -Werror
+CFLAGS		=	-O3 
 GREEN		=	\033[0;32m
 GREENB		=	\033[1;32m
 RES			=	\033[0m
@@ -50,16 +50,21 @@ CHECKER_EXE			= checker
 
 CHECKER_SRC			= main.c\
 					get_input.c\
-					process_input.c\
-					push_top.c\
-					rotate_stack.c\
-					rrotate_stack.c\
-					swap_top.c\
 					err_manager.c\
+					process_input.c\
 					apply_instruction.c\
-					visualiser.c\
-					controls.c\
+					ops_push_top.c\
+					ops_rotate_stack.c\
+					ops_rrotate_stack.c\
+					ops_swap_top.c\
 					check_stack.c
+					# push_top.c\
+					# rotate_stack.c\
+					# rrotate_stack.c\
+					# swap_top.c\
+					# visualiser.c\
+					# controls.c\
+
 
 CHECKER_FILES		= $(addprefix $(CHECKER_DIR), $(CHECKER_SRC))
 

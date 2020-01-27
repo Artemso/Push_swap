@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 13:39:19 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:58:41 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:20:04 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		sort_stack_quick(t_prop *xt)
 		sort_split(xt);
 	else if (xt->total == 2)
 		sort_two(&ST_A);
-	else
+	else if (xt->total > 2)
 	{
 		while (cnt < xt->total - 3)
 		{
