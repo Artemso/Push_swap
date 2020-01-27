@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:22:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/17 12:21:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:39:03 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	push_node(t_nbr **stack_1, t_nbr **stack_2)
 	}
 }
 
-void	push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt)
+void		push_top(t_nbr **stack, t_nbr **stack2, int op)
 {
 	push_node(stack, stack2);
 	if (op == op_a)

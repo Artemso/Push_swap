@@ -6,13 +6,13 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/27 12:55:06 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/27 13:38:15 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Flags 'n colors
 
-CFLAGS		=	-O3 -g
+CFLAGS		=	-O3 -Wall -Wextra -Werror
 GREEN		=	\033[0;32m
 GREENB		=	\033[1;32m
 RES			=	\033[0m
@@ -35,8 +35,10 @@ PUSH_SWAP_SRC		= main.c\
 					get_moves.c\
 					sort_small.c\
 					sort_quick.c\
-					rev_sort.c\
-					err_manager.c
+					rotations.c\
+					err_manager.c\
+					get_stack_data.c\
+					get_pivot.c
 
 PUSH_SWAP_FILES		= $(addprefix $(PUSH_SWAP_DIR), $(PUSH_SWAP_SRC))
 

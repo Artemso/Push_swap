@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 16:24:13 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 15:02:13 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:49:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ static void	init_prop(t_prop *xt)
 int			main(int argc, char **argv)
 {
 	t_prop	*xt;
-	char	*line;
 	int		x;
-	int		y;
 
 	if (!(xt = (t_prop *)malloc(sizeof(t_prop))))
 		ft_puterr(er_mem);

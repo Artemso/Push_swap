@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 14:42:20 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/14 10:51:16 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:49:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ int			draw_stack_2(t_prop *xt, t_nbr *stack)
 
 void		visualise(t_prop *xt)
 {
-	char	*line;
-	int		y;
-
 	init_window(xt);
 	draw_stack(xt, xt->stack_a);
 	draw_stack_2(xt, xt->stack_b);

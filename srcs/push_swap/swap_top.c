@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 14:59:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:38:50 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	swap_nodes(t_nbr **head)
 	*head = second;
 }
 
-void		swap_top(t_nbr **stack, int op, t_prop *xt)
+void		swap_top(t_nbr **stack, int op)
 {
 	swap_nodes(stack);
 	if (op == op_a)
@@ -33,7 +33,7 @@ void		swap_top(t_nbr **stack, int op, t_prop *xt)
 		ft_putstr("sb\n");
 }
 
-void		swap_top_2(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+void		swap_top_2(t_nbr **stack, t_nbr **stack2)
 {
 	swap_nodes(stack);
 	swap_nodes(stack2);

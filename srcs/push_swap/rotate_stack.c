@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:25:40 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 15:00:03 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:49:52 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	rotate(t_nbr **head)
 	curr->next = rotme;
 }
 
-void		rotate_stack(t_nbr **stack, int op, t_prop *xt)
+void		rotate_stack(t_nbr **stack, int op)
 {
 	rotate(stack);
 	if (op == op_a)
@@ -35,10 +35,9 @@ void		rotate_stack(t_nbr **stack, int op, t_prop *xt)
 		ft_putstr("rb\n");
 }
 
-void		rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt)
+void		rotate_stack_2(t_nbr **stack, t_nbr **stack2)
 {
 	rotate(stack);
 	rotate(stack2);
 	ft_putstr("rr\n");
 }
-

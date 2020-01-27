@@ -3,95 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   extra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/23 17:09:32 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 21:34:56 by solopov          ###   ########.fr       */
+/*   Created: 2020/01/27 13:55:30 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/27 13:56:48 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	find_closestval(int len, t_nbr *stack, t_prop *xt)
+void	do_rotate(int cnt, int pos, t_prop *xt)
 {
-	int cnt;
-	int avg;
-	int prevmax;
-	int prevmin;
-
-	prevmin = xt->min;
-	prevmax = xt->max;
-	cnt = 0;
-	avg = (xt->max + xt->min) / 2;
-	while (cnt < len)
+	while (cnt < pos + 1)
 	{
-		if (stack->val < avg)
-		{
-			if (stack->val + avg > prevmin + avg)
-				prevmin = stack->val;
-		}
-		else if (stack->val >= avg)
-		{
-			if (stack->val - avg < prevmax - avg)
-				prevmax = stack->val;
-		}
-		stack = stack->next;
+		rotate_stack(&ST_A, op_a);
 		cnt++;
 	}
-	if (prevmax - avg > avg - prevmin)
-		xt->pivot = prevmin;
-	else
-		xt->pivot = prevmax;
 }
 
-int	get_len(t_nbr *stack)
+void	do_rrotate(int cnt, int len, int pos, t_prop *xt)
 {
-	int	ret;
-
-	ret = 1;
-	while (stack->next != NULL)
+	while (cnt < len - pos - 1)
 	{
-		stack = stack->next;
-		ret++;
+		rrotate_stack(&ST_A, op_a);
+		cnt++;
 	}
-	return (ret);
 }
 
-int	get_max(t_nbr *stack)
+int		locate_min_pos(t_nbr *stack)
 {
-	int		max;
+	int min;
+	int pos;
 
-	max = stack->val;
-	while (stack->next != 0)
+	pos = 0;
+	min = get_min(stack);
+	while (stack->val != min)
 	{
-		if (stack->next->val > max)
-			max = stack->next->val;
+		pos += 1;
 		stack = stack->next;
 	}
-	return (max);
+	return (pos);
 }
 
-int	get_min(t_nbr *stack)
+int		locate_max_pos(t_nbr *stack)
 {
-	t_nbr	*temp;
-	int		min;
+	int max;
+	int pos;
 
-	temp = stack;
-	min = temp->val;
-	while (temp->next != 0)
+	pos = 0;
+	max = get_max(stack);
+	while (stack->val != max)
 	{
-		if (temp->next->val < min)
-			min = temp->next->val;
-		temp = temp->next;
+		pos += 1;
+		stack = stack->next;
 	}
-	return (min);
-}
-
-void	get_pivot_val(int len, t_prop *xt, t_nbr *stack)
-{
-	int		cnt;
-	t_nbr	*temp;
-
-	get_minmax(len, xt, stack);
-	find_closestval(len, stack, xt);
+	return (pos);
 }

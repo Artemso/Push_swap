@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: solopov <solopov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 14:42:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 22:02:56 by solopov          ###   ########.fr       */
+/*   Updated: 2020/01/27 14:07:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	count_moves_to_top(int len, t_prop *xt)
+void		count_moves_to_top(int len, t_prop *xt)
 {
 	t_nbr	*head;
 
@@ -44,36 +44,6 @@ static int	last_val(t_nbr *stack)
 		stack = stack->next;
 	}
 	return (lastval);
-}
-
-static int	locate_min_pos(t_nbr *stack)
-{
-	int min;
-	int pos;
-
-	pos = 0;
-	min = get_min(stack);
-	while (stack->val != min)
-	{
-		pos += 1;
-		stack = stack->next;
-	}
-	return (pos);
-}
-
-static int	locate_max_pos(t_nbr *stack)
-{
-	int max;
-	int pos;
-
-	pos = 0;
-	max = get_max(stack);
-	while (stack->val != max)
-	{
-		pos += 1;
-		stack = stack->next;
-	}
-	return (pos);
 }
 
 static int	select_move(int maxpos, int minpos, int len, t_prop *xt)
@@ -113,7 +83,7 @@ void		count_moves_to_fit(int len, t_prop *xt)
 		xt->stack_a = head_a;
 		while (xt->stack_a->next != 0)
 		{
-			if (select_move(maxpos, minpos, len , xt) == 1)
+			if (select_move(maxpos, minpos, len, xt) == 1)
 				break ;
 			xt->stack_a = xt->stack_a->next;
 		}

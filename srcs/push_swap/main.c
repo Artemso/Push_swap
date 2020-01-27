@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 12:57:21 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 14:07:14 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,7 @@ static void	init_prop(t_prop *xt)
 		ft_puterr(er_mem);
 }
 
-void		print_stack(t_nbr *stack)
-{
-	t_nbr *temp;
-
-	temp = stack;
-	while (temp != 0)
-	{
-		printf("Number:%d	|	", temp->val);
-		printf("pos:%d	|	", temp->pos);
-		printf("type_a:%d	|	", temp->type_a);
-		printf("type_b:%d	|	", temp->type_b);
-		printf("to_top:%d	|	", temp->to_top);
-		printf("to_fit:%d	|	", temp->to_fit);
-		printf("PUSHME:%d\n", temp->pushme);
-		temp = temp->next;
-	}
-	printf("\n");
-}
-
-void	free_mem(t_prop *xt)
+void		free_mem(t_prop *xt)
 {
 	t_nbr *temp;
 
@@ -53,7 +34,7 @@ void	free_mem(t_prop *xt)
 	free(xt);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int		x;
 	t_prop	*xt;
@@ -63,10 +44,7 @@ int		main(int argc, char **argv)
 	init_prop(xt);
 	x = 1;
 	if (argc == 2)
-	{
-		check_str(argv[1]);
 		xt->str = strdup(argv[1]);
-	}
 	else if (argc > 2)
 	{
 		xt->str = ft_strnew(1);
@@ -75,10 +53,10 @@ int		main(int argc, char **argv)
 			arg_to_str(argv[x], xt);
 			x++;
 		}
-		check_str(xt->str);
 	}
 	else
 		ft_puterr(er_usg);
+	check_str(xt->str);
 	process_input(xt);
 	sort_stack_quick(xt);
 	return (0);

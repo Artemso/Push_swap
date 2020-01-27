@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 12:55:52 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:57:48 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <stdio.h>
 
 # define ST_A	xt->stack_a
 # define ST_B	xt->stack_b
@@ -104,16 +103,11 @@ typedef struct		s_prop
 void				ft_puterr(int x);
 
 /*
-** Get Input
+** Process Input
 */
 
 void				check_str(char *input);
 void				arg_to_str(char *input, t_prop *xt);
-
-/*
-** Process Input
-*/
-
 void				process_input(t_prop *xt);
 
 /*
@@ -121,44 +115,47 @@ void				process_input(t_prop *xt);
 */
 
 t_nbr				*new_node(int content);
-void				push_top(t_nbr **stack, t_nbr **stack2, int op, t_prop *xt);
-void				rotate_stack(t_nbr **stack, int op, t_prop *xt);
-void				rotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				rrotate_stack(t_nbr **stack, int op, t_prop *xt);
-void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
-void				swap_top(t_nbr **stack, int op, t_prop *xt);
-void				swap_top_2(t_nbr **stack, t_nbr **stack2, t_prop *xt);
+void				push_top(t_nbr **stack, t_nbr **stack2, int op);
+void				rotate_stack(t_nbr **stack, int op);
+void				rotate_stack_2(t_nbr **stack, t_nbr **stack2);
+void				rrotate_stack(t_nbr **stack, int op);
+void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
+void				swap_top(t_nbr **stack, int op);
+void				swap_top_2(t_nbr **stack, t_nbr **stack2);
+
+/*
+** Get Stack Information
+*/
+
+int					get_min(t_nbr *stack);
+void				get_minmax(int len, t_prop *xt, t_nbr *stack);
+int					get_max(t_nbr *stack);
+int					get_len(t_nbr *stack);
+int					get_n_pos(int nb, t_nbr *stack);
 
 /*
 ** Stack Sorting
 */
 
-void				sort_three(t_nbr **stack, t_prop *xt);
-void				sort_stack_small(t_prop *xt);
-void				sort_stack_med(t_prop *xt);
+void				sort_three(t_nbr **stack);
 void				sort_stack_quick(t_prop *xt);
 void				init_sorting(t_prop *xt);
 int					is_sorted(t_nbr *head);
-void				rev_sort_stack(t_prop *xt);
+
+void				rotate_ra_rb_totop(t_prop *xt);
+void				rotate_ra_rb_tofit(t_prop *xt);
+void				rotate_rra_rrb_totop(t_prop *xt);
+void				rotate_rra_rrb_tofit(t_prop *xt);
+void				do_rotate(int cnt, int pos, t_prop *xt);
+void				do_rrotate(int cnt, int len, int pos, t_prop *xt);
 
 /*
 ** Extra
 */
 
-void				get_minmax(int len, t_prop *xt, t_nbr *stack);
-int					get_max(t_nbr *stack);
-void				print_stack(t_nbr *stack);
-int					get_len(t_nbr *stack);
-
 void				count_moves_to_fit(int len, t_prop *xt);
 void				count_moves_to_top(int len, t_prop *xt);
 void				get_pivot_val(int len, t_prop *xt, t_nbr *stack);
-int					get_min(t_nbr *stack);
-
-void				ra_rb(t_prop *xt);
-void				ra_rrb(t_prop *xt);
-void				rra_rb(t_prop *xt);
-void				rra_rrb(t_prop *xt);
 
 void				ra_rb(t_prop *xt);
 void				ra_rrb(t_prop *xt);
@@ -170,5 +167,8 @@ int					rule_min(int minpos, int len, t_prop *xt);
 int					rule_max(int maxpos, int len, t_prop *xt);
 
 void				free_mem(t_prop *xt);
+
+int					locate_max_pos(t_nbr *stack);
+int					locate_min_pos(t_nbr *stack);
 
 #endif
