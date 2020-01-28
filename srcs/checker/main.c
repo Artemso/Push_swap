@@ -6,37 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 14:34:08 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:55:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
-
-static void	init_prop(t_prop *xt)
-{
-	xt->stack_a = 0;
-	xt->stack_b = 0;
-	xt->cnt = 1;
-	xt->i_flag = 0;
-	xt->v_flag = 0;
-	xt->t_flag = 0;
-	xt->ops = 0;
-	xt->pause = 1;
-	xt->color = 16724530;
-}
-
-void		print_stack(t_nbr *stack)
-{
-	t_nbr *temp;
-
-	temp = stack;
-	while (temp != 0)
-	{
-		printf("%d ", temp->val);
-		temp = temp->next;
-	}
-	printf("\n");
-}
 
 static void	run_visual(t_prop *xt)
 {

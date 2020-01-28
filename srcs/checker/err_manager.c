@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 14:17:17 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:53:12 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,33 @@ static void	write_info(void)
 	ft_putstr("RR:	ra and rb at the same time\n");
 	ft_putstr("RRA:	rotate a - shift down all elements of stack a by 1\n");
 	ft_putstr("RRB:	rotate b - shift down all elements of stack b by 1\n");
-	ft_putstr("RRR:	rra and rrb at the same time\n");
+	ft_putstr("RRR:	rra and rrb at the same time\n\n");
+}
+
+static void	write_flags(void)
+{
+	ft_putstr("The Checker program supports following flags:\n");
+	ft_putstr("-v:	visualise, graphic representation using MLX library.");
+	ft_putstr(" Allowed controls:\n");
+	ft_putstr("	SPACE: play/pause\n");
+	ft_putstr("	RIGHT ARROW: when paused, do 1 operation\n");
+	ft_putstr("	ESC: quit\n\n");
+	ft_putstr("-(INT):	used optionally after -v flag ");
+	ft_putstr("to modify stack display color\n\n");
+	ft_putstr("-t:	total count, performs checking and displays ");
+	ft_putstr("number of operations performed to sort the stack\n\n");
+	ft_putstr("-i:	display information about the project.\n");
 }
 
 void		ft_puterr(int x)
 {
 	if (x == er_usg)
-		ft_putstr("Usage:\n./checker \"Argument String\"/ Argument List\n");
+	{
+		ft_putstr("Usage:\n");
+		ft_putstr("./checker $(ARGS)\n");
+		ft_putstr("./push_swap $(ARGS) | ./checker $(ARGS\n\n");
+		write_flags();
+	}
 	else if (x == er_inp)
 		ft_putstr("Input is incorrect.\n");
 	else if (x == er_mem)
@@ -44,6 +64,9 @@ void		ft_puterr(int x)
 	else if (x == er_max)
 		ft_putstr("Too many arguments to visualise.\n");
 	else if (x == er_info)
+	{
 		write_info();
+		write_flags();
+	}
 	exit(0);
 }

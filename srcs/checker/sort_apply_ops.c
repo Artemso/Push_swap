@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   apply_instruction.c                                :+:      :+:    :+:   */
+/*   sort_apply_ops.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 17:34:33 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 17:04:45 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:54:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	check_push(char *line, t_prop *xt)
 		push_top(&ST_B, &ST_A);
 }
 
-void	apply_instruction(char *line, t_prop *xt)
+void		apply_instruction(char *line, t_prop *xt)
 {
 	check_swap(line, xt);
 	check_rotate(line, xt);

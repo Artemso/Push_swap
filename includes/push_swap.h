@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 15:01:53 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:53:45 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ void				get_minmax(int len, t_prop *xt, t_nbr *stack);
 int					get_max(t_nbr *stack);
 int					get_len(t_nbr *stack);
 int					get_n_pos(int nb, t_nbr *stack);
-
 
 void				save_push_data(t_prop *xt);
 void				compare_moves(t_prop *xt);

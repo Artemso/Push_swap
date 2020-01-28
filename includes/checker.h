@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/28 14:28:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:55:31 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void				swap_top_2(t_nbr **stack, t_nbr **stack2);
 void				rrotate_stack(t_nbr **stack);
 void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
 
-
 /*
 ** Validation
 */
@@ -144,5 +143,6 @@ int					get_len(t_nbr *stack);
 int					give_len(t_prop *xt, int val);
 void				get_width_max(t_prop *xt);
 void				init_window(t_prop *xt);
+void				init_prop(t_prop *xt);
 
 #endif

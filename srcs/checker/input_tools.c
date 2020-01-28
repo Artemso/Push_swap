@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   input_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 15:51:54 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:55:22 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,17 @@ void	arg_to_str(char *input, t_prop *xt)
 {
 	ft_safestrjoin(&xt->str, input, 0);
 	ft_safestrjoin(&xt->str, " ", 0);
+}
+
+void	init_prop(t_prop *xt)
+{
+	xt->stack_a = 0;
+	xt->stack_b = 0;
+	xt->cnt = 1;
+	xt->i_flag = 0;
+	xt->v_flag = 0;
+	xt->t_flag = 0;
+	xt->ops = 0;
+	xt->pause = 1;
+	xt->color = 16724530;
 }
