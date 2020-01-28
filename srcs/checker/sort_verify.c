@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   controls.c                                         :+:      :+:    :+:   */
+/*   sort_verify.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/11 12:22:15 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 13:06:07 by asolopov         ###   ########.fr       */
+/*   Created: 2019/12/25 17:40:35 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/28 13:58:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 
-int	draw_one(t_prop *xt)
+int		is_sorted(t_nbr *head)
 {
-	int		ret;
-	char	*line;
+	t_nbr *temp;
 
-	if (xt->pause == 1)
+	temp = head;
+	while (temp->next != 0)
 	{
-		if ((ret = get_next_line(0, &line)) > 0)
-		{
-			apply_instruction(line, xt);
-			free(line);
-		}
-		redraw(xt);
+		if (temp->val > temp->next->val)
+			return (0);
+		temp = temp->next;
 	}
-	return (0);
+	return (1);
 }
 
-int	key_hook_press(int keycode, t_prop *xt)
+void	check_stacks(t_prop *xt)
 {
-	if (keycode == 53)
-		exit(1);
-	else if (keycode == 49 && xt->pause == 1)
-		xt->pause = 0;
-	else if (keycode == 49 && xt->pause == 0)
-		xt->pause = 1;
-	else if (keycode == 124)
-		draw_one(xt);
-	return (0);
+	if (is_sorted(xt->stack_a) && xt->stack_b == 0)
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 }

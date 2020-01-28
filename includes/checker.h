@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/28 12:51:40 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:28:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,25 +86,16 @@ typedef struct		s_prop
 	int				cnt;
 	int				ops;
 	int				pause;
+	int				color;
 }					t_prop;
 
 /*
-** Error Management
+** Input Processing and Errors
 */
 
 void				ft_puterr(int x);
-
-/*
-** Get Input
-*/
-
 void				check_str(char *input);
 void				arg_to_str(char *input, t_prop *xt);
-
-/*
-** Process Input
-*/
-
 void				process_input(t_prop *xt);
 void				check_duplicates(t_prop *xt);
 void				check_stack(t_prop *xt);
@@ -114,13 +105,13 @@ void				check_stack(t_prop *xt);
 */
 
 t_nbr				*new_node(long long content);
-void		push_top(t_nbr **stack, t_nbr **stack2);
-void		rotate_stack(t_nbr **stack);
-void		rotate_stack_2(t_nbr **stack, t_nbr **stack2);
-void		swap_top(t_nbr **stack);
-void		swap_top_2(t_nbr **stack, t_nbr **stack2);
-void		rrotate_stack(t_nbr **stack);
-void		rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
+void				push_top(t_nbr **stack, t_nbr **stack2);
+void				rotate_stack(t_nbr **stack);
+void				rotate_stack_2(t_nbr **stack, t_nbr **stack2);
+void				swap_top(t_nbr **stack);
+void				swap_top_2(t_nbr **stack, t_nbr **stack2);
+void				rrotate_stack(t_nbr **stack);
+void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
 
 
 /*
@@ -131,14 +122,27 @@ void				apply_instruction(char *line, t_prop *xt);
 void				check_stacks(t_prop *xt);
 
 /*
-** Visuals
+** Visualiser
 */
 
+void				draw_all(t_prop *xt);
+int					draw_one(t_prop *xt);
+void				redraw(t_prop *xt);
 int					onupdate(t_prop *xt);
 void				visualise(t_prop *xt);
 int					key_hook_press(int keycode, t_prop *xt);
 void				draw_stack(t_prop *xt, t_nbr *stack, int x);
+void				draw_bases(t_prop *xt);
+void				draw_background(t_prop *xt);
 
+/*
+** Tools
+*/
+
+int					get_max(t_nbr *stack);
 int					get_len(t_nbr *stack);
+int					give_len(t_prop *xt, int val);
+void				get_width_max(t_prop *xt);
+void				init_window(t_prop *xt);
 
 #endif

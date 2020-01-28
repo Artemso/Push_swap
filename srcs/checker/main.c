@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 13:26:10 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 14:34:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	init_prop(t_prop *xt)
 	xt->t_flag = 0;
 	xt->ops = 0;
 	xt->pause = 1;
+	xt->color = 16724530;
 }
 
 void		print_stack(t_nbr *stack)
@@ -72,9 +73,18 @@ static void	run_checker(t_prop *xt)
 
 static void	check_flag(int argc, char **argv, t_prop *xt)
 {
+	if (!argv[1])
+		ft_puterr(er_usg);
 	if (ft_strcmp(argv[1], "-v") == 0 && argc < 3)
 		ft_puterr(er_inp);
-	if (ft_strcmp(argv[1], "-v") == 0)
+	if (ft_strcmp(argv[1], "-v") == 0 && argv[2][0] == '-')
+	{
+		xt->color = ft_atoi(argv[2]);
+		xt->color *= -1;
+		xt->cnt += 2;
+		xt->v_flag = 1;
+	}
+	else if (ft_strcmp(argv[1], "-v") == 0)
 	{
 		xt->v_flag = 1;
 		xt->cnt += 1;
@@ -126,8 +136,6 @@ int			main(int argc, char **argv)
 			xt->cnt++;
 		}
 	}
-	else
-		ft_puterr(er_inp);
 	start_run(xt);
 	return (0);
 }

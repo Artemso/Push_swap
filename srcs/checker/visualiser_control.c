@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_stack.c                                      :+:      :+:    :+:   */
+/*   visualiser_control.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/25 17:40:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/23 15:01:34 by asolopov         ###   ########.fr       */
+/*   Created: 2020/01/11 12:22:15 by asolopov          #+#    #+#             */
+/*   Updated: 2020/01/28 14:00:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
 
-int		is_sorted(t_nbr *head)
+int	key_hook_press(int keycode, t_prop *xt)
 {
-	t_nbr *temp;
-
-	temp = head;
-	while (temp->next != 0)
-	{
-		if (temp->val > temp->next->val)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
-
-
-void	check_stacks(t_prop *xt)
-{
-	if (is_sorted(xt->stack_a) && xt->stack_b == 0)
-		ft_putstr("OK\n");
-	else
-		ft_putstr("KO\n");
+	if (keycode == 53)
+		exit(1);
+	else if (keycode == 49 && xt->pause == 1)
+		xt->pause = 0;
+	else if (keycode == 49 && xt->pause == 0)
+		xt->pause = 1;
+	else if (keycode == 124)
+		draw_one(xt);
+	return (0);
 }
