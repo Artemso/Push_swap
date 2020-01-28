@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/27 18:20:26 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:51:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ typedef enum		e_errors
 {
 	er_mem = 0,
 	er_usg,
-	er_inp
+	er_inp,
+	er_max,
+	er_info
 }					t_errors;
 
 /*
@@ -77,6 +79,13 @@ typedef struct		s_prop
 	void			*win_ptr;
 	void			*img_ptr;
 	int				*img_data;
+
+	int				v_flag;
+	int				t_flag;
+	int				i_flag;
+	int				cnt;
+	int				ops;
+	int				pause;
 }					t_prop;
 
 /*
@@ -125,8 +134,11 @@ void				check_stacks(t_prop *xt);
 ** Visuals
 */
 
+int					onupdate(t_prop *xt);
 void				visualise(t_prop *xt);
 int					key_hook_press(int keycode, t_prop *xt);
 void				draw_stack(t_prop *xt, t_nbr *stack, int x);
+
+int					get_len(t_nbr *stack);
 
 #endif
