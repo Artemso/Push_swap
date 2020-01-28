@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 14:55:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:17:21 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	run_visual(t_prop *xt)
 	check_str(xt->str);
 	process_input(xt);
 	len = get_len(xt->stack_a);
+	get_minmax(len, xt, xt->stack_a);
 	if (len < 451)
 		visualise(xt);
 	else
@@ -51,11 +52,10 @@ static void	check_flag(int argc, char **argv, t_prop *xt)
 		ft_puterr(er_usg);
 	if (ft_strcmp(argv[1], "-v") == 0 && argc < 3)
 		ft_puterr(er_inp);
-	if (ft_strcmp(argv[1], "-v") == 0 && argv[2][0] == '-')
+	if (ft_strcmp(argv[1], "-v") == 0 && ft_strcmp(argv[2], "-c") == 0)
 	{
-		xt->color = ft_atoi(argv[2]);
-		xt->color *= -1;
-		xt->cnt += 2;
+		xt->color = ft_atoi(argv[3]);
+		xt->cnt += 3;
 		xt->v_flag = 1;
 	}
 	else if (ft_strcmp(argv[1], "-v") == 0)

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 14:53:12 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:07:57 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	write_flags(void)
 	ft_putstr("	SPACE: play/pause\n");
 	ft_putstr("	RIGHT ARROW: when paused, do 1 operation\n");
 	ft_putstr("	ESC: quit\n\n");
-	ft_putstr("-(INT):	used optionally after -v flag ");
+	ft_putstr(".(INT):	used optionally after -v flag ");
 	ft_putstr("to modify stack display color\n\n");
 	ft_putstr("-t:	total count, performs checking and displays ");
 	ft_putstr("number of operations performed to sort the stack\n\n");

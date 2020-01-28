@@ -6,25 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 13:52:13 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 13:55:59 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/28 15:20:01 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/checker.h"
-
-int		get_max(t_nbr *stack)
-{
-	int		max;
-
-	max = stack->val;
-	while (stack->next != 0)
-	{
-		if (stack->next->val > max)
-			max = stack->next->val;
-		stack = stack->next;
-	}
-	return (max);
-}
 
 int		get_len(t_nbr *stack)
 {
@@ -39,15 +25,35 @@ int		get_len(t_nbr *stack)
 	return (ret);
 }
 
+void	get_minmax(int len, t_prop *xt, t_nbr *stack)
+{
+	int		cnt;
+
+	cnt = 0;
+	xt->min = stack->val;
+	xt->max = stack->val;
+	while (cnt < len - 1)
+	{
+		if (stack->next->val < xt->min)
+			xt->min = stack->next->val;
+		if (stack->next->val > xt->max)
+			xt->max = stack->next->val;
+		stack = stack->next;
+		cnt += 1;
+	}
+}
+
 int		give_len(t_prop *xt, int val)
 {
 	float	num;
 	int		len;
 
-	if (val < 0)
-		num = (float)xt->max_val / (float)val * 2;
+	if (xt->min < 0)
+		xt->min *= -1;
+	if (xt->min > xt->max)
+		num = (float)xt->min / (float)val;
 	else
-		num = (float)xt->max_val / (float)val;
+		num = (float)xt->max / (float)val;
 	len = (435 - 20) / num;
 	if (len < 0)
 		len *= -1;
@@ -59,7 +65,6 @@ void	get_width_max(t_prop *xt)
 	xt->width = (870 - get_len(xt->stack_a)) / get_len(xt->stack_a);
 	if (xt->width == 0)
 		xt->width = 1;
-	xt->max_val = get_max(xt->stack_a);
 }
 
 void	init_window(t_prop *xt)
