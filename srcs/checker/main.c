@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 15:17:21 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:51:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int			main(int argc, char **argv)
 	check_flag(argc, argv, xt);
 	if (argc == 2 || argc == 3)
 	{
-		xt->str = strdup(argv[xt->cnt]);
+		xt->str = ft_strdup(argv[xt->cnt]);
 	}
 	else if (argc > 2)
 	{

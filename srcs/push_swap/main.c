@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 11:30:27 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 13:51:18 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			main(int argc, char **argv)
 	init_prop(xt);
 	x = 1;
 	if (argc == 2)
-		xt->str = strdup(argv[1]);
+		xt->str = ft_strdup(argv[1]);
 	else if (argc > 2)
 	{
 		xt->str = ft_strnew(1);

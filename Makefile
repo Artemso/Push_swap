@@ -6,7 +6,7 @@
 #    By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 11:55:32 by asolopov          #+#    #+#              #
-#    Updated: 2020/01/28 14:06:34 by asolopov         ###   ########.fr        #
+#    Updated: 2020/01/29 14:00:10 by asolopov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RED			=	\033[0;31m
 
 # PUSH_SWAP files
 
-PUSH_SWAP_EXE		= push_swap
+NAME				= push_swap
 
 PUSH_SWAP_SRC		= main.c\
 					err_manager.c\
@@ -80,14 +80,14 @@ MLX_HOME			= /usr/local/lib -lmlx -I /usr/local/X11/include -L/usr/X11/lib -lX11
 
 .PHONY: all clean fclean re
 
-all: $(LIBFT_NAME) $(PUSH_SWAP_EXE) $(CHECKER_EXE)
+all: $(NAME)
 
-$(PUSH_SWAP_EXE): 
+$(NAME): $(CHECKER_EXE)
 	@echo "$(RED)Compiling push_swap...$(RES)"
-	@gcc -o $(PUSH_SWAP_EXE) $(CFLAGS) $(LIBFT_A) $(PUSH_SWAP_FILES)
-	@echo "$(GREENB)$(PUSH_SWAP_EXE) $(GREEN)done.$(RES)"
+	@gcc -o $(NAME) $(CFLAGS) $(LIBFT_A) $(PUSH_SWAP_FILES)
+	@echo "$(GREENB)$(NAME) $(GREEN)done.$(RES)"
 
-$(CHECKER_EXE):
+$(CHECKER_EXE): $(LIBFT_NAME)
 	@echo "$(RED)Compiling checker...$(RES)"
 	@gcc -o $(CHECKER_EXE) $(CFLAGS) $(LIBFT_A) $(CHECKER_FILES) -L $(MLX_LNK)
 	@echo "$(GREENB)$(CHECKER_EXE) $(GREEN)done.$(RES)"
@@ -104,7 +104,7 @@ clean:
 
 fclean: clean
 	@echo "$(RED)Removing Executables & Library...$(RES)"
-	@/bin/rm -f $(PUSH_SWAP_EXE)
+	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(CHECKER_EXE)
 	@Make fclean -C $(LIBFT_DIR)
 	@echo "$(GREEN)Done.$(RES)"
