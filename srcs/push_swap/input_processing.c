@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 14:07:48 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:52:25 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:27:25 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			process_input(t_prop *xt)
 
 	array = ft_strsplit(xt->str, ' ');
 	ft_strdel(&xt->str);
+	check_array(array);
 	make_stack(array, xt);
 	check_stack(xt);
 	check_duplicates(xt);

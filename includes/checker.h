@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/28 15:20:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:52:15 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct		s_prop
 ** Input Processing and Errors
 */
 
+void				check_array(char **array);
 void				ft_puterr(int x);
 void				check_str(char *input);
 void				arg_to_str(char *input, t_prop *xt);

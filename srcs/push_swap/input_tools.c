@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:46 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 14:54:07 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 16:47:56 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	check_str(char *input)
 	x = 0;
 	while (input[x] != '\0')
 	{
-		if (!(input[x] == ' ' || ft_isdigit(input[x]) || input[x] == '-'))
+		if (!(input[x] == ' ' || ft_isdigit(input[x]) \
+		|| input[x] == '+' || input[x] == '-'))
 			ft_puterr(er_inp);
 		x++;
 	}
@@ -63,4 +64,33 @@ void	arg_to_str(char *input, t_prop *xt)
 {
 	ft_safestrjoin(&xt->str, input, 0);
 	ft_safestrjoin(&xt->str, " ", 0);
+}
+
+void	check_array(char **array)
+{
+	int cnt;
+	int cnt2;
+
+	cnt = 0;
+	cnt2 = 0;
+	if (!array[0])
+		ft_puterr(er_inp);
+	while (array[cnt])
+	{
+		cnt2 = 0;
+		if (ft_isdigit(array[cnt][cnt2]))
+		{
+			while (array[cnt][cnt2] != '\0')
+			{
+				if (!(ft_isdigit(array[cnt][cnt2]) || array[cnt][cnt2] == '\0'))
+					ft_puterr(er_inp);
+				cnt2++;
+			}
+		}
+		else if (array[cnt][0] == '-' && !(ft_isdigit(array[cnt][1])))
+			ft_puterr(er_inp);
+		else if (array[cnt][0] == '+' && !(ft_isdigit(array[cnt][1])))
+			ft_puterr(er_inp);
+		cnt++;
+	}
 }
