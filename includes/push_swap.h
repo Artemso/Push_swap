@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:00:02 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 16:27:49 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 18:20:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void				check_duplicates(t_prop *xt);
 void				ft_puterr(int x);
 void				free_mem(t_prop *xt);
 void				check_array(char **array);
+void				check_symbols(char **array, int cnt, int cnt2);
 
 /*
 ** Stack Operations

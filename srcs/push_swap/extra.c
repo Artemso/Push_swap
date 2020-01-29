@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:55:30 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 13:56:48 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 18:20:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,14 @@ int		locate_max_pos(t_nbr *stack)
 		stack = stack->next;
 	}
 	return (pos);
+}
+
+void	check_symbols(char **array, int cnt, int cnt2)
+{
+	while (array[cnt][cnt2] != '\0')
+	{
+		if (!(ft_isdigit(array[cnt][cnt2]) || array[cnt][cnt2] == '\0'))
+			ft_puterr(er_inp);
+		cnt2++;
+	}
 }
