@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 15:07:57 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:50:43 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_puterr(int x)
 		write_flags();
 	}
 	else if (x == er_inp)
-		ft_putstr("Input is incorrect.\n");
+		ft_putstr("Error\n");
 	else if (x == er_mem)
 		ft_putstr("Memory Error.\n");
 	else if (x == er_max)

@@ -6,10 +6,11 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:56:31 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 16:37:22 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:52:32 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../../includes/push_swap.h"
 
 static void	init_prop(t_prop *xt)

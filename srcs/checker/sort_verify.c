@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/25 17:40:35 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 16:52:05 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:29:06 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ void	check_stacks(t_prop *xt)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
+	exit(0);
 }

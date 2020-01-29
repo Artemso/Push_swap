@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 17:35:55 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/28 14:02:45 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:31:05 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	draw_all(t_prop *xt)
 
 void	visualise(t_prop *xt)
 {
-	if (get_len(xt->stack_a) < 451)
+	if (is_sorted(xt->stack_a))
+		exit(0);
+	else if (get_len(xt->stack_a) < 451)
 	{
 		init_window(xt);
 		get_width_max(xt);

@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/29 16:52:15 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:30:51 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void				rrotate_stack_2(t_nbr **stack, t_nbr **stack2);
 ** Validation
 */
 
+int					is_sorted(t_nbr *head);
 void				apply_instruction(char *line, t_prop *xt);
 void				check_stacks(t_prop *xt);
 

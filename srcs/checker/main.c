@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 13:51:06 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:51:42 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	run_checker(t_prop *xt)
 
 	check_str(xt->str);
 	process_input(xt);
+	if (xt->total == 1)
+		check_stacks(xt);
 	ret = 1;
 	while (ret != 0)
 	{
@@ -97,7 +99,7 @@ int			main(int argc, char **argv)
 		ft_puterr(er_mem);
 	init_prop(xt);
 	check_flag(argc, argv, xt);
-	if (argc == 2 || argc == 3)
+	if (argc == 2)
 	{
 		xt->str = ft_strdup(argv[xt->cnt]);
 	}
