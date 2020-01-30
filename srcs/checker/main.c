@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:22:59 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 17:51:42 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:42:51 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ static void	check_flag(int argc, char **argv, t_prop *xt)
 		ft_puterr(er_usg);
 	if (ft_strcmp(argv[1], "-v") == 0 && argc < 3)
 		ft_puterr(er_inp);
-	if (ft_strcmp(argv[1], "-v") == 0 && ft_strcmp(argv[2], "-c") == 0)
+	else if (ft_strcmp(argv[1], "-v") == 0 && ft_strcmp(argv[2], "-c") == 0)
 	{
-		xt->color = ft_atoi(argv[3]);
+		if (argv[3])
+			xt->color = ft_atoi(argv[3]);
 		xt->cnt += 3;
 		xt->v_flag = 1;
 	}

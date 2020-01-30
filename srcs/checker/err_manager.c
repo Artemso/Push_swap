@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/29 17:50:43 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:45:27 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static void	write_info(void)
 static void	write_flags(void)
 {
 	ft_putstr("The Checker program supports following flags:\n");
-	ft_putstr("-v:	visualise, graphic representation using MLX library.");
+	ft_putstr("-v:		visualise, graphic representation using MLX library.");
 	ft_putstr(" Allowed controls:\n");
-	ft_putstr("	SPACE: play/pause\n");
-	ft_putstr("	RIGHT ARROW: when paused, do 1 operation\n");
-	ft_putstr("	ESC: quit\n\n");
-	ft_putstr(".(INT):	used optionally after -v flag ");
+	ft_putstr("		SPACE: play/pause\n");
+	ft_putstr("		RIGHT ARROW: when paused, do 1 operation\n");
+	ft_putstr("		ESC: quit\n\n");
+	ft_putstr("-c (INT):	used optionally after -v flag ");
 	ft_putstr("to modify stack display color\n\n");
-	ft_putstr("-t:	total count, performs checking and displays ");
+	ft_putstr("-t:		total count, performs checking and displays ");
 	ft_putstr("number of operations performed to sort the stack\n\n");
-	ft_putstr("-i:	display information about the project.\n");
+	ft_putstr("-i:		display information about the project.\n");
 }
 
 void		ft_puterr(int x)
