@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/30 15:45:27 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/30 16:17:40 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	write_info(void)
 
 static void	write_flags(void)
 {
-	ft_putstr("The Checker program supports following flags:\n");
+	ft_putstr("The checker program supports following flags:\n");
 	ft_putstr("-v:		visualise, graphic representation using MLX library.");
-	ft_putstr(" Allowed controls:\n");
+	ft_putstr(" 450 numbers and less are allowed to visualise. Controls:\n");
 	ft_putstr("		SPACE: play/pause\n");
 	ft_putstr("		RIGHT ARROW: when paused, do 1 operation\n");
 	ft_putstr("		ESC: quit\n\n");
@@ -54,7 +54,8 @@ void		ft_puterr(int x)
 	{
 		ft_putstr("Usage:\n");
 		ft_putstr("./checker $(ARGS)\n");
-		ft_putstr("./push_swap $(ARGS) | ./checker $(ARGS\n\n");
+		ft_putstr("./push_swap $(ARGS) | ./checker $(ARGS)\n");
+		ft_putstr("checker takes list of arguments or an argument string\n\n");
 		write_flags();
 	}
 	else if (x == er_inp)

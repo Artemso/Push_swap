@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:18:36 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 15:19:01 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/01/30 16:17:17 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	ft_puterr(int x)
 {
 	if (x == er_usg)
 	{
-		ft_putstr("Usage:\n./push_swap \"Argument String\"/ Argument List\n");
+		ft_putstr("Usage:\n");
+		ft_putstr("./push_swap $(ARGS)\n");
+		ft_putstr("push_swap takes list of arguments");
+		ft_putstr(" or an argument string\n\n");
 		exit(0);
 	}
 	else if (x == er_inp)
