@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 10:16:36 by solopov           #+#    #+#             */
-/*   Updated: 2020/01/29 17:30:51 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:34:08 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef enum		e_opers
 
 typedef struct		s_nbr
 {
-	int				val;
+	long long		val;
 	struct s_nbr	*next;
 }					t_nbr;
 

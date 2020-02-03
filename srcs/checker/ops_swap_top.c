@@ -6,7 +6,7 @@
 /*   By: asolopov <asolopov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 17:17:54 by asolopov          #+#    #+#             */
-/*   Updated: 2020/01/27 17:16:34 by asolopov         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:25:38 by asolopov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void		swap_top(t_nbr **stack)
 
 void		swap_top_2(t_nbr **stack, t_nbr **stack2)
 {
-	if ((*stack)->next && (*stack2)->next && (*stack) && (stack2))
+	if ((*stack) && (*stack)->next)
 	{
-		swap_nodes(stack);
-		swap_nodes(stack2);
+		if ((*stack2) && (*stack2)->next)
+		{
+			swap_nodes(stack);
+			swap_nodes(stack2);
+		}
 	}
 }
