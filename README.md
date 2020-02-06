@@ -1,22 +1,22 @@
 # Push_Swap
-## Push_Swap, a bespoke sorting algorithm project
+## A bespoke sorting algorithm project
 
 ![](push_swap_visual.gif)
 
-Given a list of numbers (positive and negative, no duplicates) sort it in the ascending order using Stack A and Stack B.
+Given a list of numbers (positive and negative, no duplicates) sort them in the ascending order using Stack A and Stack B.
 The allowed operations are:
 
-SA:	swap a - swap first 2 elements at the top of stack a
-SB:	swap b - swap first 2 elements at the top of stack b
-SS:	sa and sb at the same time.
-PA:	push a - take the first element at the top of b and put it at the top of a
-PB:	push b - take the first element at the top of a and put it at the top of b
-RA:	rotate a - shift up all elements of stack a by 1
-RB:	rotate b - shift up all elements of stack b by 1
-RR:	ra and rb at the same time
-RRA:	rotate a - shift down all elements of stack a by 1
-RRB:	rotate b - shift down all elements of stack b by 1
-RRR:	rra and rrb at the same time
+*SA:	swap a - swap first 2 elements at the top of stack a
+*SB:	swap b - swap first 2 elements at the top of stack b
+*SS:	sa and sb at the same time.
+*PA:	push a - take the first element at the top of b and put it at the top of a
+*PB:	push b - take the first element at the top of a and put it at the top of b
+*RA:	rotate a - shift up all elements of stack a by 1
+*RB:	rotate b - shift up all elements of stack b by 1
+*RR:	ra and rb at the same time
+*RRA:	rotate a - shift down all elements of stack a by 1
+*RRB:	rotate b - shift down all elements of stack b by 1
+*RRR:	rra and rrb at the same time
 
 The checker program supports following flags:
 -v:		visualise, graphic representation using MLX library. 450 numbers and less are allowed to visualise. Controls:
