@@ -30,3 +30,10 @@ The checker program supports following flags:
 * -t:		total count, performs checking and displays number of operations performed to sort the stack
 
 * -i:		display information about the project.
+
+
+Performance (n operations) average | Numbers | Cases tested
+--------- | --------- | ---------
+ | 100 | 100
+ | 500 | 50
+
