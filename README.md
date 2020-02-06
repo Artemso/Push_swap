@@ -4,7 +4,7 @@
 ![](push_swap_visual.gif)
 
 Given a list of numbers (positive and negative, no duplicates) sort them in the ascending order using Stack A and Stack B.
-The allowed operations are:
+	The allowed operations are:
 
 * SA:	swap a - swap first 2 elements at the top of stack a
 * SB:	swap b - swap first 2 elements at the top of stack b
@@ -19,13 +19,14 @@ The allowed operations are:
 * RRR:	rra and rrb at the same time
 
 The checker program supports following flags:
--v:		visualise, graphic representation using MLX library. 450 numbers and less are allowed to visualise. Controls:
-		SPACE: play/pause
-		RIGHT ARROW: when paused, do 1 operation
-		ESC: quit
+* -v:		visualise, graphic representation using MLX library. 450 numbers and less are allowed to visualise.
+	* Controls:
+		* SPACE: play/pause
+		* RIGHT ARROW: when paused, do 1 operation
+		* ESC: quit
 
--c (INT):	used optionally after -v flag to modify stack display color
+* -c (INT):	used optionally after -v flag to modify stack display color
 
--t:		total count, performs checking and displays number of operations performed to sort the stack
+* -t:		total count, performs checking and displays number of operations performed to sort the stack
 
--i:		display information about the project.
+* -i:		display information about the project.
