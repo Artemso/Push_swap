@@ -3,7 +3,7 @@
 
 ![](push_swap_visual.gif)
 
-Given a list of numbers (positive and negative, no duplicates) sort them in the ascending order using Stack A and Stack B.
+Given a list of integers (positive and negative, no duplicates) sort them in the ascending order using Stack A and Stack B.
 	The allowed operations are:
 
 * SA:	swap a - swap first 2 elements at the top of stack a
@@ -32,8 +32,8 @@ The checker program supports following flags:
 * -i:		display information about the project.
 
 
-Performance (n operations) average | Numbers | Cases tested
---------- | --------- | ---------
- | 100 | 100
- | 500 | 50
+Operations, average | Operations, max | Numbers | Cases tested
+--------- | --------- | --------- | ---------
+585.13 | 640 | 100 | 100
+4473.86 | 4773 | 500 | 50
 
