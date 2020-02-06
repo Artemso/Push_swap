@@ -1,5 +1,8 @@
 # Push_Swap
-Push_Swap, a bespoke sorting algorithm project:
+## Push_Swap, a bespoke sorting algorithm project
+
+![](push_swap_visual.gif)
+
 Given a list of numbers (positive and negative, no duplicates) sort it in the ascending order using Stack A and Stack B.
 The allowed operations are:
 
